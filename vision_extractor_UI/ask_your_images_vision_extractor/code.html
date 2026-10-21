@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Vision Extractor</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-tertiary":"#ffffff","primary-container":"#4f46e5","on-primary":"#ffffff","surface-container-lowest":"#ffffff","surface-container-highest":"#d3e4fe","surface-variant":"#d3e4fe","secondary-container":"#dae2fd","on-secondary-fixed-variant":"#3f465c","on-secondary-container":"#5c647a","secondary-fixed":"#dae2fd","on-error-container":"#93000a","on-secondary":"#ffffff","on-surface":"#0b1c30","outline-variant":"#c7c4d8","on-background":"#0b1c30","error-container":"#ffdad6","primary-fixed":"#e2dfff","outline":"#777587","inverse-on-surface":"#eaf1ff","on-tertiary-fixed-variant":"#005236","surface-container-low":"#eff4ff","tertiary-fixed":"#6ffbbe","tertiary":"#005338","primary-fixed-dim":"#c3c0ff","inverse-primary":"#c3c0ff","surface-tint":"#4d44e3","on-primary-fixed-variant":"#3323cc","on-secondary-fixed":"#131b2e","surface-container-high":"#dce9ff","secondary-fixed-dim":"#bec6e0","secondary":"#565e74","surface":"#f8f9ff","tertiary-container":"#006e4b","on-surface-variant":"#464555","background":"#f8f9ff","on-error":"#ffffff","on-primary-fixed":"#0f0069","surface-container":"#e5eeff","tertiary-fixed-dim":"#4edea3","on-tertiary-fixed":"#002113","on-tertiary-container":"#67f4b7","primary":"#3525cd","surface-dim":"#cbdbf5","inverse-surface":"#213145","surface-bright":"#f8f9ff","on-primary-container":"#dad7ff","error":"#ba1a1a"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"gutter-mobile":"0.75rem","space-sm":"0.5rem","margin-mobile":"1rem","space-md":"1rem","gutter":"1.5rem","space-xl":"2.5rem","space-lg":"1.5rem","margin":"2rem","space-xs":"0.25rem"},"fontFamily":{"label-md":["Inter"],"body-sm":["Inter"],"headline-lg":["Geist"],"code-sm":["JetBrains Mono"],"body-lg":["Inter"],"headline-sm":["Geist"],"headline-lg-mobile":["Geist"],"display":["Geist"],"code-md":["JetBrains Mono"],"headline-md":["Geist"],"body-md":["Inter"]},"fontSize":{"label-md":["0.75rem",{"lineHeight":"1","letterSpacing":"0.02em","fontWeight":"600"}],"body-sm":["0.75rem",{"lineHeight":"1.5","letterSpacing":"0.01em","fontWeight":"400"}],"headline-lg":["2rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"600"}],"code-sm":["0.6875rem",{"lineHeight":"1.4","letterSpacing":"0em","fontWeight":"500"}],"body-lg":["1rem",{"lineHeight":"1.6","letterSpacing":"0em","fontWeight":"400"}],"headline-sm":["1rem",{"lineHeight":"1.4","letterSpacing":"-0.005em","fontWeight":"500"}],"headline-lg-mobile":["1.5rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"600"}],"display":["3rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"600"}],"code-md":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-md":["1.25rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"500"}],"body-md":["0.875rem",{"lineHeight":"1.5","letterSpacing":"0em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[18px]">document_scanner</span></div><span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Vision Extractor</span></div><div class="hidden sm:inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-secondary-container/60"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span><span class="font-code-sm text-code-sm text-on-secondary-container font-medium">Mock Dev Mode</span></div></div><nav class="hidden xl:flex items-center gap-space-xs px-1 py-1 rounded-lg bg-surface-container-low" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg shadow-sm"><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="overview" href="#">Overview</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="extract-images" href="#">Extract Images</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="search-reports" href="#">Search Reports</a><a aria-current="page" class="px-space-md py-1.5 transition-all bg-primary-container text-on-primary font-medium rounded-lg shadow-sm" data-path="ask-your-images" href="#">Ask Your Images</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="reports" href="#">Reports</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="settings" href="#">Settings</a></nav><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-low"><span class="h-2 w-2 rounded-full bg-error"></span><span class="font-code-sm text-code-sm text-on-surface-variant">FastAPI: Disconnected (Mock)</span></div><button aria-label="Toggle theme" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" id="theme-toggle-btn" onclick="document.documentElement.classList.toggle('dark');" type="button"><span class="material-symbols-outlined text-[20px] dark:hidden">light_mode</span><span class="material-symbols-outlined text-[20px] hidden dark:inline">dark_mode</span></button><div class="relative flex items-center gap-space-sm pl-space-xs"><div class="hidden md:flex flex-col text-right"><span class="font-body-sm text-body-sm text-on-surface font-medium leading-none">Alex Chen</span><span class="font-code-sm text-code-sm text-on-surface-variant leading-none mt-1">alex.chen@example.com</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/30" src="https://lh3.googleusercontent.com/aida/AEtjO1WrygqNG8DoBkyZmVOAzPcSdGRHbjzFnHSJSvadj8SyfRiZY1mIbMpA1LMAO0odOXCSvWPwGe1djU4lfeAfm0tkdFtMy831tM7p4HJhI63iXkp6CRVSWEw_9g1zmVx0_2lq3dBwlj8cfJdPaq4a-17MGZWXmrxtx8CHcBWV4HSvWR3hRE0nhQ1DzvE35INVWoY23Q8mwRUL283aTvbXGriEN2QZIh6zXjiMT7sfaOEgsCREtGrBWbonrJ4"/><span class="material-symbols-outlined text-[16px] text-on-surface-variant hidden md:inline">expand_more</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<!-- Top Session Context Banner & Micro-telemetry -->
+<div class="w-full bg-surface-container-low px-gutter py-space-sm flex flex-wrap items-center justify-between gap-space-sm shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-code-sm text-code-sm text-on-surface font-medium uppercase tracking-wider">Session Active: RAG-QNA-8841</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline">•</span>
+<div class="flex items-center gap-1.5 px-space-xs py-0.5 rounded-lg bg-surface-container text-on-surface-variant font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[14px] text-tertiary">hub</span>
+        ChromaDB Vector Store: Synced (4,180 Visual Chunks)
+      </div>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="px-space-sm py-1 rounded-lg bg-surface-container-highest/60 text-on-surface-variant font-code-sm text-code-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-primary">terminal</span>
+        Backend service boundary: RAG pipeline ready to bind to FastAPI endpoints.
+      </div>
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded-lg hover:bg-surface-container transition-colors" title="Session Options">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Primary Split-Pane Workstation Interface -->
+<div class="w-full grid grid-cols-1 xl:grid-cols-12 gap-0 relative">
+<!-- Left Sidebar: Active Knowledge Space & Sources (3 Cols) -->
+<aside class="xl:col-span-3 bg-surface-container-low/70 p-gutter flex flex-col gap-space-lg shadow-sm">
+<!-- Section Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">layers</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Indexed Sources</h2>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-primary-container text-on-primary font-code-sm text-code-sm font-semibold">3 Active</span>
+</div>
+<!-- Scope Filter Toggle Box -->
+<div class="p-space-md rounded-xl bg-surface shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">Dynamic Grounding Scope</span>
+<span class="font-code-sm text-code-sm text-tertiary font-medium">99.1% Vector Match</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Queries retrieve OCR bounding coordinates and semantic vision embeddings simultaneously.</p>
+</div>
+<!-- Filterable Document Checklist -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Reports In Context</span>
+<button class="font-code-sm text-code-sm text-primary hover:underline" id="toggle-all-sources">Select All</button>
+</div>
+<!-- Doc Card 1 (Active) -->
+<label class="group relative flex items-start gap-space-sm p-space-md rounded-xl bg-surface hover:bg-surface-container transition-all cursor-pointer shadow-sm">
+<input checked="" class="mt-1 h-4 w-4 rounded accent-primary-container cursor-pointer" type="checkbox"/>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-1">
+<span class="font-code-md text-code-md text-on-surface font-semibold truncate">REP-4029</span>
+<span class="px-1.5 py-0.2 rounded bg-tertiary-fixed text-on-tertiary-fixed font-code-sm text-code-sm font-semibold">99.4%</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface truncate mt-0.5">warehouse_receipt_08.png</span>
+<div class="flex items-center gap-space-xs mt-1 text-on-surface-variant font-code-sm text-code-sm">
+<span>Page 1 of 1</span>
+<span>•</span>
+<span>18 Bounding Boxes</span>
+</div>
+</div>
+</label>
+<!-- Doc Card 2 (Active) -->
+<label class="group relative flex items-start gap-space-sm p-space-md rounded-xl bg-surface hover:bg-surface-container transition-all cursor-pointer shadow-sm">
+<input checked="" class="mt-1 h-4 w-4 rounded accent-primary-container cursor-pointer" type="checkbox"/>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-1">
+<span class="font-code-md text-code-md text-on-surface font-semibold truncate">REP-3891</span>
+<span class="px-1.5 py-0.2 rounded bg-tertiary-fixed text-on-tertiary-fixed font-code-sm text-code-sm font-semibold">96.8%</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface truncate mt-0.5">battery_spec_sheet_rev2.jpg</span>
+<div class="flex items-center gap-space-xs mt-1 text-on-surface-variant font-code-sm text-code-sm">
+<span>Section D-12</span>
+<span>•</span>
+<span>4 Tables Parsed</span>
+</div>
+</div>
+</label>
+<!-- Doc Card 3 (Active) -->
+<label class="group relative flex items-start gap-space-sm p-space-md rounded-xl bg-surface hover:bg-surface-container transition-all cursor-pointer shadow-sm">
+<input checked="" class="mt-1 h-4 w-4 rounded accent-primary-container cursor-pointer" type="checkbox"/>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-1">
+<span class="font-code-md text-code-md text-on-surface font-semibold truncate">REP-4105</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-container font-code-sm text-code-sm font-semibold">91.0%</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface truncate mt-0.5">manifest_carrier_signed.png</span>
+<div class="flex items-center gap-space-xs mt-1 text-on-surface-variant font-code-sm text-code-sm">
+<span>Page 2 of 4</span>
+<span>•</span>
+<span>Signature Validated</span>
+</div>
+</div>
+</label>
+<!-- Doc Card 4 (Inactive Inactive Example) -->
+<label class="group relative flex items-start gap-space-sm p-space-md rounded-xl bg-surface/50 hover:bg-surface opacity-60 hover:opacity-100 transition-all cursor-pointer">
+<input class="mt-1 h-4 w-4 rounded accent-primary-container cursor-pointer" type="checkbox"/>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-1">
+<span class="font-code-md text-code-md text-on-surface-variant truncate">REP-3712</span>
+<span class="text-on-surface-variant font-code-sm text-code-sm">Excluded</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate mt-0.5">thermal_run_log.pdf</span>
+</div>
+</label>
+</div>
+<!-- Grounding Telemetry Mini-card -->
+<div class="mt-auto p-space-md rounded-xl bg-surface-container flex flex-col gap-space-xs">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span>
+<span class="font-label-md text-label-md font-semibold">Zero-Hallucination Guard</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Claims lacking image bounding box cross-references are automatically flagged and suppressed.</p>
+<div class="w-full bg-surface rounded-full h-1.5 mt-1 overflow-hidden">
+<div class="bg-tertiary-container h-full rounded-full w-full"></div>
+</div>
+</div>
+</aside>
+<!-- Main Chat Workspace (9 Cols) -->
+<main class="xl:col-span-9 flex flex-col min-h-[calc(100vh-8.5rem)] justify-between bg-surface p-gutter md:p-space-xl">
+<!-- Conversational Stream -->
+<div class="flex flex-col gap-space-xl w-full max-w-4xl mx-auto">
+<!-- Turn 1: User Query -->
+<div class="flex items-start justify-end gap-space-md">
+<div class="flex flex-col items-end max-w-2xl">
+<div class="flex items-center gap-space-xs mb-1.5">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Alex Chen</span>
+<span class="font-code-sm text-code-sm text-outline">•</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">10:42 AM</span>
+</div>
+<div class="p-space-lg rounded-2xl rounded-tr-sm bg-primary text-on-primary shadow-sm font-body-lg text-body-lg leading-relaxed">
+              What was the declared quantity and origin of the battery packs received this week?
+            </div>
+<div class="flex items-center gap-space-xs mt-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+<span class="font-code-sm text-code-sm">Dispatched to 3 visual indexes</span>
+</div>
+</div>
+<img alt="User avatar" class="w-8 h-8 rounded-full object-cover mt-6 shadow-sm" src="https://lh3.googleusercontent.com/aida/AEtjO1WrygqNG8DoBkyZmVOAzPcSdGRHbjzFnHSJSvadj8SyfRiZY1mIbMpA1LMAO0odOXCSvWPwGe1djU4lfeAfm0tkdFtMy831tM7p4HJhI63iXkp6CRVSWEw_9g1zmVx0_2lq3dBwlj8cfJdPaq4a-17MGZWXmrxtx8CHcBWV4HSvWR3hRE0nhQ1DzvE35INVWoY23Q8mwRUL283aTvbXGriEN2QZIh6zXjiMT7sfaOEgsCREtGrBWbonrJ4"/>
+</div>
+<!-- Turn 2: Assistant Response with Precision Citations -->
+<div class="flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0 shadow-sm mt-6">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+</div>
+<div class="flex flex-col max-w-3xl flex-1">
+<div class="flex items-center gap-space-xs mb-1.5">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Vision RAG Engine</span>
+<span class="font-code-sm text-code-sm text-outline">•</span>
+<span class="font-code-sm text-code-sm text-tertiary font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                OCR-Core 4.2 Calibrated
+              </span>
+</div>
+<!-- Content Container -->
+<div class="p-space-xl rounded-2xl rounded-tl-sm bg-surface-container-lowest shadow-md flex flex-col gap-space-md">
+<!-- Direct Natural Language Answer -->
+<div class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+<p class="mb-space-sm">
+                  Based on <span class="font-code-md text-code-md px-1.5 py-0.5 rounded bg-surface-container font-semibold text-primary">warehouse_receipt_08.png</span> (Report #REP-4029) and <span class="font-code-md text-code-md px-1.5 py-0.5 rounded bg-surface-container font-semibold text-primary">battery_spec_sheet_rev2.jpg</span> (Report #REP-3891):
+                </p>
+<div class="pl-space-md my-space-sm flex flex-col gap-space-sm">
+<div class="flex items-start gap-space-xs">
+<span class="text-primary font-bold">•</span>
+<span><strong class="font-semibold text-on-surface">Quantity:</strong> 42 Units of modular battery storage packs (Model: Apex Lithium-Iron Pack 48V-100Ah).</span>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="text-primary font-bold">•</span>
+<span><strong class="font-semibold text-on-surface">Origin / Vendor:</strong> Apex Logistics Hub (Dock Bay 4B, South Terminal).</span>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="text-primary font-bold">•</span>
+<span><strong class="font-semibold text-on-surface">Verified Condition:</strong> Inbound manifest signed with zero transit damage noted by lead intake inspector.</span>
+</div>
+</div>
+</div>
+<!-- Interactive Visual Evidences Inline Strip -->
+<div class="mt-space-xs p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">crop_free</span>
+                    Extracted Visual Regions (Bounding Bounding Box Coordinates)
+                  </span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Hover to preview anchor</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<!-- Visual Snippet 1 -->
+<div class="group relative rounded-lg bg-surface p-space-sm shadow-sm flex items-center gap-space-sm hover:bg-surface-container transition-all cursor-pointer">
+<div class="w-14 h-14 rounded bg-surface-container-high overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="Close-up macro detail of an industrial warehouse receipt table showing text row 'Apex Battery 48V 100Ah' and declared quantity '42 Units' highlighted in an indigo outline box with crisp focus, high contrast monochrome document background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdjl_-mGGny8wr2-mYa_nMhbBBDPVp9rZnxUWdX41IbF-f1v0nJHi1XyWoO3sfZtPneEnN_zoXbiMxqEwjV3vFtn6H_MMS8qWnL_Ipej3gAjJTyAN7P8IPxl7a0rIHF6H509AreXRXaz6n4fklfjE5fyQCFntFzO6yRb6UetpXwxcikxjnQ-6gqaUmkTHLu7UFBEciIKpmWPU1SuSYg2fhIhgNV0rYp6yJzz8pS8MuHBzA29RcUgsm"/>
+<div class="absolute inset-0 bg-primary-container/20"></div>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-code-sm text-code-sm font-semibold text-on-surface truncate">REP-4029 • Page 1 [y:340, x:112]</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Row 4: "Total Units: 42"</span>
+<span class="font-code-sm text-code-sm text-tertiary mt-0.5">Confidence 99.4%</span>
+</div>
+</div>
+<!-- Visual Snippet 2 -->
+<div class="group relative rounded-lg bg-surface p-space-sm shadow-sm flex items-center gap-space-sm hover:bg-surface-container transition-all cursor-pointer">
+<div class="w-14 h-14 rounded bg-surface-container-high overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="Technical specification label on metal equipment casing with printed text 'Vendor: Apex Logistics Hub' and clean manufacturer stamp, professional macro technical documentation photo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAUVuxTblFFc5eXi8AS7c9t2omAslNwLJpW0PROV3mU47DjQQ2dRwXkzsqmkUrFvtBVW0kQ2DHtZzcRrxaPZ-3ihtIijTRWBfjlCFEgnkwER5fjSjM9iiMDidbxHOJ4p_uNtFTUl3cTbuSt6ak0UuK42dncVUsyP_m9hU8zYCYwARnrTMw-HEoyniXK8EuVj-Abii6Ib39lTuNVlgpmCzxBxlb_MrMpieUA_IiqDy_m8QMh98ObHFq"/>
+<div class="absolute inset-0 bg-primary-container/20"></div>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-code-sm text-code-sm font-semibold text-on-surface truncate">REP-3891 • Sec D [y:88, x:420]</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Header: "Consignor: Apex Hub"</span>
+<span class="font-code-sm text-code-sm text-tertiary mt-0.5">Confidence 96.8%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Verification Chips & Grounding Status Bar -->
+<div class="pt-space-sm flex flex-wrap items-center justify-between gap-space-sm">
+<!-- Actionable Citation Badges -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface hover:bg-surface-container shadow-sm font-code-sm text-code-sm text-on-surface font-medium transition-colors">
+<span class="material-symbols-outlined text-[14px] text-primary">description</span>
+                    Source: REP-4029 • Page 1
+                    <span class="px-1 rounded bg-tertiary-fixed text-on-tertiary-fixed font-semibold">99.4%</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface hover:bg-surface-container shadow-sm font-code-sm text-code-sm text-on-surface font-medium transition-colors">
+<span class="material-symbols-outlined text-[14px] text-primary">description</span>
+                    Source: REP-3891 • Section D
+                    <span class="px-1 rounded bg-tertiary-fixed text-on-tertiary-fixed font-semibold">96.8%</span>
+</button>
+</div>
+<!-- Grounding Verification Tag -->
+<div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-tertiary/10 text-tertiary font-code-sm text-code-sm font-medium">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+                  Verified against ChromaDB RAG Context — 0 ungrounded claims
+                </div>
+</div>
+<!-- Quick Feedback & Export Utilities -->
+<div class="flex items-center justify-between pt-space-xs text-on-surface-variant">
+<div class="flex items-center gap-space-sm">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="Copy Answer">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="Export JSON Citation Manifest">
+<span class="material-symbols-outlined text-[16px]">data_object</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="Accurate Response">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span>
+</button>
+</div>
+<span class="font-code-sm text-code-sm text-outline">Latency: 418ms • Tokens: 184</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Dock: Prompt Suggestions & Precision Input Console -->
+<div class="w-full max-w-4xl mx-auto mt-space-xl flex flex-col gap-space-sm">
+<!-- Prompt Suggestions Pills -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 scrollbar-none">
+<span class="font-label-md text-label-md text-on-surface-variant shrink-0 mr-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">tips_and_updates</span>
+            Suggested:
+          </span>
+<button class="shrink-0 px-space-md py-1 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface font-body-sm text-body-sm transition-all shadow-sm" onclick="fillPrompt('Summarize total spend across latest receipts')">
+            Summarize total spend across latest receipts
+          </button>
+<button class="shrink-0 px-space-md py-1 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface font-body-sm text-body-sm transition-all shadow-sm" onclick="fillPrompt('List all compliance warnings in inspection photos')">
+            List all compliance warnings in inspection photos
+          </button>
+<button class="shrink-0 px-space-md py-1 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface font-body-sm text-body-sm transition-all shadow-sm" onclick="fillPrompt('Check for signature mismatches on bill of lading')">
+            Check for signature mismatches on bill of lading
+          </button>
+</div>
+<!-- Input Area Container -->
+<div class="relative bg-surface-container-lowest rounded-2xl shadow-lg p-space-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm px-space-xs">
+<!-- Image Attach / Upload to Context -->
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-xl transition-all" title="Attach new visual source for immediate indexing">
+<span class="material-symbols-outlined text-[20px]">add_photo_alternate</span>
+</button>
+<!-- Question Input -->
+<input class="flex-1 bg-transparent py-2.5 font-body-lg text-body-lg text-on-surface placeholder:text-outline focus:outline-none" id="qna-input" placeholder="Ask a question about your extracted image repository..." type="text"/>
+<!-- Extraction Filter Pill -->
+<div class="hidden sm:flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface-container text-on-surface-variant font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">auto_detect_voice</span>
+<span>Visual RAG</span>
+</div>
+<!-- Send Action Button -->
+<button class="h-10 px-space-md rounded-xl bg-primary-container hover:bg-primary text-on-primary flex items-center justify-center gap-1.5 shadow-sm transition-all font-label-md text-label-md" id="send-btn">
+<span>Ask</span>
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+</button>
+</div>
+<!-- Bottom Micro Meta inside Console -->
+<div class="flex items-center justify-between px-space-sm pt-space-xs text-on-surface-variant font-code-sm text-code-sm">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-tertiary">check_circle</span>
+              OCR Engine active • Multi-modal embeddings ready
+            </span>
+<span class="hidden md:inline">Press <kbd class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface font-code-sm text-code-sm">Return ↵</kbd> to execute</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+    function fillPrompt(text) {
+      const input = document.getElementById('qna-input');
+      if (input) {
+        input.value = text;
+        input.focus();
+      }
+    }
+
+    document.getElementById('toggle-all-sources')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      const checkboxes = document.querySelectorAll('aside input[type="checkbox"]');
+      const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+      checkboxes.forEach(cb => cb.checked = !allChecked);
+      this.textContent = allChecked ? 'Select All' : 'Deselect All';
+    });
+
+    document.getElementById('send-btn')?.addEventListener('click', function() {
+      const input = document.getElementById('qna-input');
+      if (input && input.value.trim() !== '') {
+        input.value = '';
+        input.placeholder = 'Retrieving vector coordinates and generating grounded answer...';
+        setTimeout(() => {
+          input.placeholder = 'Ask a question about your extracted image repository...';
+        }, 1500);
+      }
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)]"><div class="w-full px-margin py-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm"><div class="flex items-center gap-space-md"><span class="font-body-sm text-body-sm text-on-surface-variant">Vision Extractor Workstation</span><span class="h-3 w-px bg-outline-variant"></span><span class="font-code-sm text-code-sm text-on-surface-variant">v2.4.0-preview</span><span class="h-3 w-px bg-outline-variant"></span><span class="font-code-sm text-code-sm text-tertiary font-medium">Engine: OCR-Core 4.2</span></div><div class="flex items-center gap-space-lg"><span class="font-body-sm text-body-sm text-on-surface-variant">Environment: Isolated Sandbox</span><span class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Vision Extractor Labs</span></div></div></footer></body></html>

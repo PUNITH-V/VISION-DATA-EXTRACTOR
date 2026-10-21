@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Vision Extractor</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-tertiary":"#ffffff","primary-container":"#4f46e5","on-primary":"#ffffff","surface-container-lowest":"#ffffff","surface-container-highest":"#d3e4fe","surface-variant":"#d3e4fe","secondary-container":"#dae2fd","on-secondary-fixed-variant":"#3f465c","on-secondary-container":"#5c647a","secondary-fixed":"#dae2fd","on-error-container":"#93000a","on-secondary":"#ffffff","on-surface":"#0b1c30","outline-variant":"#c7c4d8","on-background":"#0b1c30","error-container":"#ffdad6","primary-fixed":"#e2dfff","outline":"#777587","inverse-on-surface":"#eaf1ff","on-tertiary-fixed-variant":"#005236","surface-container-low":"#eff4ff","tertiary-fixed":"#6ffbbe","tertiary":"#005338","primary-fixed-dim":"#c3c0ff","inverse-primary":"#c3c0ff","surface-tint":"#4d44e3","on-primary-fixed-variant":"#3323cc","on-secondary-fixed":"#131b2e","surface-container-high":"#dce9ff","secondary-fixed-dim":"#bec6e0","secondary":"#565e74","surface":"#f8f9ff","tertiary-container":"#006e4b","on-surface-variant":"#464555","background":"#f8f9ff","on-error":"#ffffff","on-primary-fixed":"#0f0069","surface-container":"#e5eeff","tertiary-fixed-dim":"#4edea3","on-tertiary-fixed":"#002113","on-tertiary-container":"#67f4b7","primary":"#3525cd","surface-dim":"#cbdbf5","inverse-surface":"#213145","surface-bright":"#f8f9ff","on-primary-container":"#dad7ff","error":"#ba1a1a"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"gutter-mobile":"0.75rem","space-sm":"0.5rem","margin-mobile":"1rem","space-md":"1rem","gutter":"1.5rem","space-xl":"2.5rem","space-lg":"1.5rem","margin":"2rem","space-xs":"0.25rem"},"fontFamily":{"label-md":["Inter"],"body-sm":["Inter"],"headline-lg":["Geist"],"code-sm":["JetBrains Mono"],"body-lg":["Inter"],"headline-sm":["Geist"],"headline-lg-mobile":["Geist"],"display":["Geist"],"code-md":["JetBrains Mono"],"headline-md":["Geist"],"body-md":["Inter"]},"fontSize":{"label-md":["0.75rem",{"lineHeight":"1","letterSpacing":"0.02em","fontWeight":"600"}],"body-sm":["0.75rem",{"lineHeight":"1.5","letterSpacing":"0.01em","fontWeight":"400"}],"headline-lg":["2rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"600"}],"code-sm":["0.6875rem",{"lineHeight":"1.4","letterSpacing":"0em","fontWeight":"500"}],"body-lg":["1rem",{"lineHeight":"1.6","letterSpacing":"0em","fontWeight":"400"}],"headline-sm":["1rem",{"lineHeight":"1.4","letterSpacing":"-0.005em","fontWeight":"500"}],"headline-lg-mobile":["1.5rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"600"}],"display":["3rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"600"}],"code-md":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-md":["1.25rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"500"}],"body-md":["0.875rem",{"lineHeight":"1.5","letterSpacing":"0em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[18px]">document_scanner</span></div><span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Vision Extractor</span></div><div class="hidden sm:inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-secondary-container/60"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span><span class="font-code-sm text-code-sm text-on-secondary-container font-medium">Mock Dev Mode</span></div></div><nav class="hidden xl:flex items-center gap-space-xs px-1 py-1 rounded-lg bg-surface-container-low" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg shadow-sm"><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="overview" href="#">Overview</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="extract-images" href="#">Extract Images</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="search-reports" href="#">Search Reports</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="ask-your-images" href="#">Ask Your Images</a><a aria-current="page" class="px-space-md py-1.5 transition-all bg-primary-container text-on-primary font-medium rounded-lg shadow-sm" data-path="reports" href="#">Reports</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="settings" href="#">Settings</a></nav><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-low"><span class="h-2 w-2 rounded-full bg-error"></span><span class="font-code-sm text-code-sm text-on-surface-variant">FastAPI: Disconnected (Mock)</span></div><button aria-label="Toggle theme" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" id="theme-toggle-btn" onclick="document.documentElement.classList.toggle('dark');" type="button"><span class="material-symbols-outlined text-[20px] dark:hidden">light_mode</span><span class="material-symbols-outlined text-[20px] hidden dark:inline">dark_mode</span></button><div class="relative flex items-center gap-space-sm pl-space-xs"><div class="hidden md:flex flex-col text-right"><span class="font-body-sm text-body-sm text-on-surface font-medium leading-none">Alex Chen</span><span class="font-code-sm text-code-sm text-on-surface-variant leading-none mt-1">alex.chen@example.com</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/30" src="https://lh3.googleusercontent.com/aida/AEtjO1WrygqNG8DoBkyZmVOAzPcSdGRHbjzFnHSJSvadj8SyfRiZY1mIbMpA1LMAO0odOXCSvWPwGe1djU4lfeAfm0tkdFtMy831tM7p4HJhI63iXkp6CRVSWEw_9g1zmVx0_2lq3dBwlj8cfJdPaq4a-17MGZWXmrxtx8CHcBWV4HSvWR3hRE0nhQ1DzvE35INVWoY23Q8mwRUL283aTvbXGriEN2QZIh6zXjiMT7sfaOEgsCREtGrBWbonrJ4"/><span class="material-symbols-outlined text-[16px] text-on-surface-variant hidden md:inline">expand_more</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<!-- Subtle ambient decorative glow strictly contained -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-32 right-1/4 w-96 h-96 bg-primary-fixed-dim/30 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -top-20 right-10 w-72 h-72 bg-secondary-container/40 rounded-full blur-2xl pointer-events-none"></div>
+<div class="w-full px-margin py-space-lg flex flex-col gap-space-lg max-w-[1600px] mx-auto">
+<!-- Top Context Banner (RLS Scoped Isolation) -->
+<div class="w-full rounded-xl bg-surface-container-low px-space-md py-space-sm shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<span class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-1.5 flex-wrap">
+<span class="font-medium text-on-surface">Supabase RLS active:</span>
+<code class="bg-surface-container px-1.5 py-0.5 rounded text-primary font-code-sm">auth.uid() == user_id</code>
+<span class="text-secondary">•</span>
+<span>Scoped tenant:</span>
+<span class="font-medium text-on-surface">alex.chen@example.com</span>
+</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 text-tertiary font-code-sm text-code-sm font-semibold">
+<span class="material-symbols-outlined text-[15px]">verified_user</span>
+            Row-Level Policy Enforced
+          </span>
+</div>
+</div>
+<!-- Action Bar & Controls Header -->
+<div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-secondary font-medium">Archived Extraction Runs</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-code-sm text-code-sm font-semibold">14 Synced</span>
+</div>
+<div class="flex items-baseline gap-space-md flex-wrap">
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">Extraction Reports</h1>
+<span class="font-body-md text-body-md text-on-surface-variant">Structured OCR &amp; Multimodal Parse Cache</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- View Toggle -->
+<div class="inline-flex p-1 rounded-xl bg-surface-container shadow-sm" role="tablist">
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg font-label-md text-label-md bg-surface-container-lowest text-on-surface shadow-sm transition-all" id="view-table-btn" onclick="switchView('table')" title="Table View">
+<span class="material-symbols-outlined text-[17px]">table_rows</span>
+<span>Table</span>
+</button>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" id="view-grid-btn" onclick="switchView('grid')" title="Grid View">
+<span class="material-symbols-outlined text-[17px]">grid_view</span>
+<span>Grid</span>
+</button>
+</div>
+<!-- Bulk Export Split Trigger -->
+<div class="relative inline-block text-left" id="export-dropdown-wrapper">
+<button class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-surface-container-lowest hover:bg-surface-container text-on-surface shadow-sm transition-all" onclick="toggleExportMenu()">
+<span class="material-symbols-outlined text-[18px] text-secondary">file_download</span>
+<span class="font-body-sm text-body-sm font-medium">Export All</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span>
+</button>
+<div class="hidden absolute right-0 mt-1.5 w-44 rounded-xl bg-surface-container-lowest shadow-xl py-1 z-30" id="export-menu">
+<button class="w-full text-left px-3 py-2 font-body-sm text-body-sm text-on-surface hover:bg-surface-container flex items-center gap-2" onclick="triggerDownloadFeedback('Exporting all 14 datasets as JSON...')">
+<span class="material-symbols-outlined text-[16px] text-primary">data_object</span>
+                Export JSON (Raw)
+              </button>
+<button class="w-full text-left px-3 py-2 font-body-sm text-body-sm text-on-surface hover:bg-surface-container flex items-center gap-2" onclick="triggerDownloadFeedback('Exporting flattened table as CSV...')">
+<span class="material-symbols-outlined text-[16px] text-tertiary">table_chart</span>
+                Export CSV (Flattened)
+              </button>
+</div>
+</div>
+<!-- Primary Shortcut -->
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary-container text-on-primary shadow-sm hover:opacity-95 active:scale-[0.99] transition-all">
+<span class="material-symbols-outlined text-[18px]">add_a_photo</span>
+<span class="font-body-sm text-body-sm font-medium tracking-wide">+ New Extraction</span>
+</button>
+</div>
+</div>
+<!-- Quick Metrics Strip -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary uppercase font-semibold">Mean Confidence</span>
+<span class="material-symbols-outlined text-tertiary text-[18px]">verified</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">98.1%</span>
+<span class="font-code-sm text-code-sm text-tertiary font-semibold">+0.4% sigma</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary uppercase font-semibold">Indexed in ChromaDB</span>
+<span class="material-symbols-outlined text-primary text-[18px]">hub</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">11 / 14</span>
+<span class="font-code-sm text-code-sm text-secondary">78.5% ready</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary uppercase font-semibold">Parsed Attributes</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">pin</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">348</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">keys mapped</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary uppercase font-semibold">Latency Avg</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">speed</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">1.28s</span>
+<span class="font-code-sm text-code-sm text-tertiary font-medium">P95 &lt; 2.1s</span>
+</div>
+</div>
+</div>
+<!-- Filters & Search Toolbar -->
+<div class="w-full p-space-sm rounded-xl bg-surface-container-lowest shadow-sm flex flex-col lg:flex-row items-center justify-between gap-space-sm">
+<div class="flex-1 w-full flex items-center gap-space-sm">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full pl-9 pr-4 py-2 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:bg-surface-container-lowest transition-all" id="search-input" onkeyup="filterReports()" placeholder="Filter by document name, schema, or field..." type="text"/>
+</div>
+<div class="hidden sm:flex items-center gap-1.5">
+<button class="type-pill active px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md transition-all" onclick="setFilterType('all')">All</button>
+<button class="type-pill px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all" onclick="setFilterType('Invoice')">Invoices</button>
+<button class="type-pill px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all" onclick="setFilterType('Spec Sheet')">Spec Sheets</button>
+<button class="type-pill px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all" onclick="setFilterType('Schematic')">Schematics</button>
+<button class="type-pill px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all" onclick="setFilterType('Receipt')">Receipts</button>
+</div>
+</div>
+<div class="w-full lg:w-auto flex items-center justify-between lg:justify-end gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-code-sm text-secondary">Vector Index:</span>
+<select class="py-1.5 px-2.5 rounded-lg bg-surface-container-low text-on-surface font-code-sm text-code-sm focus:outline-none" id="index-filter" onchange="filterReports()">
+<option value="all">All Statuses</option>
+<option value="indexed">Indexed in ChromaDB</option>
+<option value="raw">Raw Only</option>
+</select>
+</div>
+<span class="text-outline-variant font-code-sm text-code-sm">Showing <span id="visible-count">6</span> of 14</span>
+</div>
+</div>
+<!-- TABLE VIEW -->
+<div class="w-full overflow-x-auto rounded-xl bg-surface-container-lowest shadow-sm" id="table-container">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/70 text-on-surface-variant font-code-sm text-code-sm">
+<th class="py-3 px-4 font-semibold">Document / Source Image</th>
+<th class="py-3 px-4 font-semibold">Extraction Type</th>
+<th class="py-3 px-4 font-semibold">Entities Parsed</th>
+<th class="py-3 px-4 font-semibold">Confidence Metric</th>
+<th class="py-3 px-4 font-semibold">Ingestion Timestamp</th>
+<th class="py-3 px-4 font-semibold">Storage Engine</th>
+<th class="py-3 px-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface" id="report-table-body">
+<!-- Row 1 -->
+<tr class="report-item hover:bg-surface-container-low/40 transition-colors" data-conf="99.4" data-fields="18" data-id="rep_901" data-name="Acme-Q3-Hardware-Bill.png" data-status="indexed" data-type="Invoice">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container flex-shrink-0 shadow-sm" data-alt="High-contrast technical invoice with sharp tabular line items on a desk with subtle indigo backlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEIfzkqIG5pCqz5KDEt7N96Z00Fnb4676sECjL1FodU09SEJjOu2egYBqrsxt5BtiBIva3XrQK85JSDO7t8CRDf13AqQ1EvHjtlYysmMo_Kxvzy8JfGuOaRtYJKheiK2Pfze0tGUIowJjtTGHRpIpccE8yNTxM922wAkhdw3nRRX0bnwF-DdCV6h6viB26cgM6PWQsVtjNvbCC4oI0D67h2NMcs_1hqOmK3KphxVPZFv-j_vp6Bltv"/>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm font-semibold truncate text-on-surface">Acme-Q3-Hardware-Bill.png</span>
+<span class="font-code-sm text-code-sm text-secondary">hash: c4f810e7b89 • 2.4 MB</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md">Invoice</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">data_array</span>
+<span class="font-code-md text-code-md font-medium text-on-surface">18 fields</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 99.4%"></div>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-tertiary">99.4%</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-on-surface">2025-02-28</span>
+<span class="font-code-sm text-code-sm text-secondary">14:22:09 UTC</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-container/20 text-tertiary font-code-sm text-code-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  ChromaDB Indexed
+                </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1 justify-end">
+<button class="p-1.5 rounded-lg text-secondary hover:text-primary hover:bg-surface-container transition-colors" onclick="openDetailModal('Acme-Q3-Hardware-Bill.png', 'Invoice', '99.4%', '18 fields', '2025-02-28 14:22:09 UTC', 'ChromaDB Indexed', 'rep_901')" title="View Report Details">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:text-primary hover:bg-surface-container transition-colors" onclick="triggerDownloadFeedback('Downloading Acme-Q3-Hardware-Bill.json')" title="Download JSON">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:text-error hover:bg-error-container/40 transition-colors" onclick="openDeleteModal('Acme-Q3-Hardware-Bill.png', 'rep_901')" title="Delete Extraction">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="report-item hover:bg-surface-container-low/40 transition-colors" data-conf="98.7" data-fields="32" data-id="rep_902" data-name="Optical-Sensor-FX400-Datasheet.pdf" data-status="indexed" data-type="Spec Sheet">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container flex-shrink-0 shadow-sm" data-alt="Technical engineering component diagram with precision pinout pins and blue laser measurement lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB891ACIiC5vUn0xBboqwQiqPS1bDlfV2j8-qORsBhxBTIoRUUrJUHX7HdlP5cA86D0QqSNJwgIE08NotXtE-FP-yUiPG3FgnosLya10hgdune5uudLEc0avEmOJ3g6yfk9ELhrnHuP1ehyXB1YYNd_JMvi7-JNqjaixj7nU39c1XYfBRmDXVgRje7o9PQw3y1tLc-UYQlqOnwtYjziHFgrUfjcdMIlN04vGdMsOB4qo1GU3LETydY"/>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm font-semibold truncate text-on-surface">Optical-Sensor-FX400-Datasheet.pdf</span>
+<span class="font-code-sm text-code-sm text-secondary">hash: a18bc3d890e • 5.1 MB</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md">Spec Sheet</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">data_array</span>
+<span class="font-code-md text-code-md font-medium text-on-surface">32 fields</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 98.7%"></div>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-tertiary">98.7%</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-on-surface">2025-02-27</span>
+<span class="font-code-sm text-code-sm text-secondary">09:11:43 UTC</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-container/20 text-tertiary font-code-sm text-code-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  ChromaDB Indexed
+                </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1 justify-end">
+<button class="p-1.5 rounded-lg text-secondary hover:text-primary hover:bg-surface-container transition-colors" onclick="openDetailModal('Optical-Sensor-FX400-Datasheet.pdf', 'Spec Sheet', '98.7%', '32 fields', '2025-02-27 09:11:43 UTC', 'ChromaDB Indexed', 'rep_902')" title="View Report Details">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:text-primary hover:bg-surface-container transition-colors" onclick="triggerDownloadFeedback('Downloading Optical-Sensor-FX400-Datasheet.json')" title="Download JSON">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:text-error hover:bg-error-container/40 transition-colors" onclick="openDeleteModal('Optical-Sensor-FX400-Datasheet.pdf', 'rep_902')" title="Delete Extraction">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="report-item hover:bg-surface-container-low/40 transition-colors" data-conf="96.2" data-fields="44" data-id="rep_903" data-name="PCB-Power-Distribution-v2.svg" data-status="indexed" data-type="Schematic">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container flex-shrink-0 shadow-sm" data-alt="Dense circuit board schematic architecture layout with fine traces, vector nodes, and microchip footprints" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQA5D3zT9sN7jVJc2NpLrhXVc0k2RYPpFFwzC9QQPDadswIsHppyydelTCFgEx6f6kYdg0CtwikmznzLK7z2adebEiwNMUFcdncQHziy0wEP7bjOfQv9sUphJhPAt7uT91IazUQPD23hJJi3CMjfSY1rrIWhg7b17bEVkm0ynumwtFUPJAokcSrl-EIB27oAHU6IJEZWVjudzJN9aJLlZ1AVDtjvqiiwQWpRha1MZ6UYB4IkDYrY1O"/>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm font-semibold truncate text-on-surface">PCB-Power-Distribution-v2.svg</span>
+<span class="font-code-sm text-code-sm text-secondary">hash: fe9028cb112 • 890 KB</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-md text-label-md">Schematic</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">data_array</span>
+<span class="font-code-md text-code-md font-medium text-on-surface">44 fields</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 96.2%"></div>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-tertiary">96.2%</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-on-surface">2025-02-25</span>
+<span class="font-code-sm text-code-sm text-secondary">18:04:12 UTC</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-container/20 text-tertiary font-code-sm text-code-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  ChromaDB Indexed
+                </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1 justify-end">
+<button class="p-1.5 rounded-lg text-secondary hover:text-primary hover:bg-surface-container transition-colors" onclick="openDetailModal('PCB-Power-Distribution-v2.svg', 'Schematic', '96.2%', '44 fields', '2025-02-25 18:04:12 UTC', 'ChromaDB Indexed', 'rep_903')" title="View Report Details">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:text-primary hover:bg-surface-container transition-colors" onclick="triggerDownloadFeedback('Downloading PCB-Power-Distribution-v2.json')" title="Download JSON">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:text-error hover:bg-error-container/40 transition-colors" onclick="openDeleteModal('PCB-Power-Distribution-v2.svg', 'rep_903')" title="Delete Extraction">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="report-item hover:bg-surface-container-low/40 transition-colors" data-conf="93.8" data-fields="12" data-id="rep_904" data-name="Logistics-Freight-Terminal-Receipt.jpg" data-status="raw" data-type="Receipt">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container flex-shrink-0 shadow-sm" data-alt="Crinkled thermal printer paper receipt on metal industrial desk with printed barcode and currency figures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK0iuJoRxLLm2Gt46X0tvOPGRPm4uK8K-RVm7Zd61Z3QfM_XvuCnRdXB-N9X_SV6K-1FG943vSOuKJ5u-xurhudh8l7mEr_wjQ97SNSIYg42gT0oV6j7_0dY2WfNZl_G4aqqs7jgKXvZes7jqktLwgsg7UkOBpZGQMBftXx7eBFpv5qqgfJsSMHrLaxt8HSkDRvNOX97YtFk7-Ff2FqTagb2yzXn2kw8AthXA7xDIHZ5jDRCNQk4vd"/>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm font-semibold truncate text-on-surface">Logistics-Freight-Terminal-Receipt.jpg</span>
+<span class="font-code-sm text-code-sm text-secondary">hash: 991acdd4122 • 1.1 MB</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md">Receipt</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">data_array</span>
+<span class="font-code-md text-code-md font-medium text-on-surface">12 fields</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 93.8%"></div>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-secondary">93.8%</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-on-surface">2025-02-24</span>
+<span class="font-code-sm text-code-sm text-secondary">22:30:15 UTC</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container/50 text-on-secondary-container font-code-sm text-code-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Raw Only
+                </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1 justify-end">
+<button class="p-1.5 rounded-lg text-secondary hover:text-primary hover:bg-surface-container transition-colors" onclick="openDetailModal('Logistics-Freight-Terminal-Receipt.jpg', 'Receipt', '93.8%', '12 fields', '2025-02-24 22:30:15 UTC', 'Raw Only', 'rep_904')" title="View Report Details">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:text-primary hover:bg-surface-container transition-colors" onclick="triggerDownloadFeedback('Downloading Logistics-Freight-Terminal-Receipt.json')" title="Download JSON">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:text-error hover:bg-error-container/40 transition-colors" onclick="openDeleteModal('Logistics-Freight-Terminal-Receipt.jpg', 'rep_904')" title="Delete Extraction">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="report-item hover:bg-surface-container-low/40 transition-colors" data-conf="99.8" data-fields="26" data-id="rep_905" data-name="Delta-Supplier-Consolidated-Inv88.pdf" data-status="indexed" data-type="Invoice">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container flex-shrink-0 shadow-sm" data-alt="Close up of enterprise multi-currency commercial supplier bill with stamps and line total verification badges" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3tUwyB6R7uMOoBb-Vt16bWn1riYlb5fDm9cadQXjtLdOd95I9xhSqrXoPb6wWW8y_XwanoSq_QflUM4WVhJ7WW8fIpu7cxft3in0xOCqx89LDv90PM_pZstqyKe5ik1S4uUJPHr_bQWwWbfpLbv7j-4Pyn-ELFlHzo7kI6dZ5ldAfsbXi0aICwEtf73dEehXqhb3PTpXIaxY96teMfAHH1KqaI5JoyjUtZIY4-4laqEdfJgObWGpF"/>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm font-semibold truncate text-on-surface">Delta-Supplier-Consolidated-Inv88.pdf</span>
+<span class="font-code-sm text-code-sm text-secondary">hash: 48dbba90918 • 3.7 MB</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md">Invoice</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">data_array</span>
+<span class="font-code-md text-code-md font-medium text-on-surface">26 fields</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 99.8%"></div>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-tertiary">99.8%</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-on-surface">2025-02-23</span>
+<span class="font-code-sm text-code-sm text-secondary">11:15:02 UTC</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-container/20 text-tertiary font-code-sm text-code-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  ChromaDB Indexed
+                </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1 justify-end">
+<button class="p-1.5 rounded-lg text-secondary hover:text-primary hover:bg-surface-container transition-colors" onclick="openDetailModal('Delta-Supplier-Consolidated-Inv88.pdf', 'Invoice', '99.8%', '26 fields', '2025-02-23 11:15:02 UTC', 'ChromaDB Indexed', 'rep_905')" title="View Report Details">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:text-primary hover:bg-surface-container transition-colors" onclick="triggerDownloadFeedback('Downloading Delta-Supplier-Consolidated-Inv88.json')" title="Download JSON">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:text-error hover:bg-error-container/40 transition-colors" onclick="openDeleteModal('Delta-Supplier-Consolidated-Inv88.pdf', 'rep_905')" title="Delete Extraction">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="report-item hover:bg-surface-container-low/40 transition-colors" data-conf="97.1" data-fields="19" data-id="rep_906" data-name="Micro-MCU-Architecture-Overview.png" data-status="raw" data-type="Spec Sheet">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container flex-shrink-0 shadow-sm" data-alt="Microcontroller architecture bus layout diagram with memory addresses and register table callouts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq6rbx9XnH5NpukyNC7A02Uv1L2JX-gImt0jbea5PMgaHq560n53tquNTlU1SZZF2LkXWjiG0WeaGgWUw7jHmWFGy7VALkZOY4uDLzJrYuRMug4dTrc3GgzE2a6cxKwPUxWZ5F2F2jM8MrikYAtex0jSukGPfY62z01EJR7nE21607yFoAksIr03SEl7_Laqitf3VM8iMWeel7zi4ADJ6BJPl1LoQIHSOVcN4z3cErTaOojQWsEK21"/>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm font-semibold truncate text-on-surface">Micro-MCU-Architecture-Overview.png</span>
+<span class="font-code-sm text-code-sm text-secondary">hash: 1109efcc421 • 1.8 MB</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md">Spec Sheet</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">data_array</span>
+<span class="font-code-md text-code-md font-medium text-on-surface">19 fields</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 97.1%"></div>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-tertiary">97.1%</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-on-surface">2025-02-21</span>
+<span class="font-code-sm text-code-sm text-secondary">16:40:55 UTC</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container/50 text-on-secondary-container font-code-sm text-code-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Raw Only
+                </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1 justify-end">
+<button class="p-1.5 rounded-lg text-secondary hover:text-primary hover:bg-surface-container transition-colors" onclick="openDetailModal('Micro-MCU-Architecture-Overview.png', 'Spec Sheet', '97.1%', '19 fields', '2025-02-21 16:40:55 UTC', 'Raw Only', 'rep_906')" title="View Report Details">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:text-primary hover:bg-surface-container transition-colors" onclick="triggerDownloadFeedback('Downloading Micro-MCU-Architecture-Overview.json')" title="Download JSON">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:text-error hover:bg-error-container/40 transition-colors" onclick="openDeleteModal('Micro-MCU-Architecture-Overview.png', 'rep_906')" title="Delete Extraction">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- GRID VIEW (Initially hidden, seamlessly toggled) -->
+<div class="hidden grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-space-md w-full" id="grid-container">
+<!-- Grid Card 1 -->
+<div class="report-card p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between gap-space-md group hover:shadow-md transition-shadow" data-name="Acme-Q3-Hardware-Bill.png" data-status="indexed" data-type="Invoice">
+<div class="flex flex-col gap-space-sm">
+<div class="relative w-full h-40 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="High-contrast technical invoice with sharp tabular line items on a desk with subtle indigo backlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB70-Z0ymLUSy3zGf5DyRrPFnFzKUA8dUnKOLJMgfc5zWWQjkUhUcvwRJyZRvq0-OfaNAupKkeTKo5CC20K40CSsgULNhnC3cu2blDDfVW6eGX4NfNJE6RMTlQUFolHhDdSAn0dIXVvNrSl0rhIn8BZhv0qDc7r--ZoRS8NLyQpmIlA8wZ_F2b8LVz-jizKf0Gwlj8T2RU-f8-5OFV-GI_MYXfdxrWS_Q8f-Hhz4KhbzF9fyZlmnuIT"/>
+<div class="absolute top-2 left-2 flex gap-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface font-label-md text-label-md">Invoice</span>
+</div>
+<div class="absolute top-2 right-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-lowest/90 backdrop-blur-sm text-tertiary font-code-sm text-code-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  99.4%
+                </span>
+</div>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface truncate">Acme-Q3-Hardware-Bill.png</h2>
+<span class="font-code-sm text-code-sm text-secondary">Parsed 18 entities • 2025-02-28</span>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between border-t-0 bg-surface-container-low/50 -mx-space-md -mb-space-md px-space-md py-2.5 rounded-b-xl">
+<span class="font-code-sm text-code-sm text-tertiary font-medium">ChromaDB Synced</span>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded text-secondary hover:text-primary" onclick="openDetailModal('Acme-Q3-Hardware-Bill.png', 'Invoice', '99.4%', '18 fields', '2025-02-28 14:22:09 UTC', 'ChromaDB Indexed', 'rep_901')"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="p-1 rounded text-secondary hover:text-primary" onclick="triggerDownloadFeedback('Downloading Acme-Q3-Hardware-Bill.json')"><span class="material-symbols-outlined text-[18px]">download</span></button>
+<button class="p-1 rounded text-secondary hover:text-error" onclick="openDeleteModal('Acme-Q3-Hardware-Bill.png', 'rep_901')"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+</div>
+<!-- Grid Card 2 -->
+<div class="report-card p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between gap-space-md group hover:shadow-md transition-shadow" data-name="Optical-Sensor-FX400-Datasheet.pdf" data-status="indexed" data-type="Spec Sheet">
+<div class="flex flex-col gap-space-sm">
+<div class="relative w-full h-40 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Technical engineering component diagram with precision pinout pins and blue laser measurement lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0F3XsF3a8kw8b-kANn446XG8xlkXVb3mH6BNQgq033a4WJ_msFSTbPxcU0PxFP7UkiiKLsYe_KP0X7fDKScxLQZeGo6Z0aZ9plzV0G7_a0sSVj0eKUXFQNJX7ramKB3JlH1G77YyPRGVpAY1WMOTj7D_3LfUCxWHQVtGw4Tc-Ur20KZ1gv7hhXkD13P8dM63IKs9MlNsVh8n13VrkNUHDpVznJvti8njse7RF_w5sisZ7v18aVbcb"/>
+<div class="absolute top-2 left-2 flex gap-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface font-label-md text-label-md">Spec Sheet</span>
+</div>
+<div class="absolute top-2 right-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-lowest/90 backdrop-blur-sm text-tertiary font-code-sm text-code-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  98.7%
+                </span>
+</div>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface truncate">Optical-Sensor-FX400-Datasheet.pdf</h2>
+<span class="font-code-sm text-code-sm text-secondary">Parsed 32 entities • 2025-02-27</span>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between border-t-0 bg-surface-container-low/50 -mx-space-md -mb-space-md px-space-md py-2.5 rounded-b-xl">
+<span class="font-code-sm text-code-sm text-tertiary font-medium">ChromaDB Synced</span>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded text-secondary hover:text-primary" onclick="openDetailModal('Optical-Sensor-FX400-Datasheet.pdf', 'Spec Sheet', '98.7%', '32 fields', '2025-02-27 09:11:43 UTC', 'ChromaDB Indexed', 'rep_902')"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="p-1 rounded text-secondary hover:text-primary" onclick="triggerDownloadFeedback('Downloading Optical-Sensor-FX400-Datasheet.json')"><span class="material-symbols-outlined text-[18px]">download</span></button>
+<button class="p-1 rounded text-secondary hover:text-error" onclick="openDeleteModal('Optical-Sensor-FX400-Datasheet.pdf', 'rep_902')"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+</div>
+<!-- Grid Card 3 -->
+<div class="report-card p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between gap-space-md group hover:shadow-md transition-shadow" data-name="PCB-Power-Distribution-v2.svg" data-status="indexed" data-type="Schematic">
+<div class="flex flex-col gap-space-sm">
+<div class="relative w-full h-40 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Dense circuit board schematic architecture layout with fine traces, vector nodes, and microchip footprints" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb5Z9HiJ2MLHZI-NDxA1NjkRQI6_zvZ03wBdmCGrfPh0sbP8-CRVmYezQcKhmemiE8k_Q4vYJ4c2B9r48MRvlE1HPc4kBV58wJaCIU17MkIte-lefUpLrwaYZBR9lkgri13mhoW3KetvxlX754eygHvdc5ZeU5DtA6mQz4auetvmiAYZvd4Qf7Z6YJmDemx-6z11VyViK0d0R4InvH_ot4Epz_tbIgVq95rBu0VIHaMa_mw7QUoXrF"/>
+<div class="absolute top-2 left-2 flex gap-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-lowest/90 backdrop-blur-sm text-on-primary-fixed-variant bg-primary-fixed font-label-md text-label-md">Schematic</span>
+</div>
+<div class="absolute top-2 right-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-lowest/90 backdrop-blur-sm text-tertiary font-code-sm text-code-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  96.2%
+                </span>
+</div>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface truncate">PCB-Power-Distribution-v2.svg</h2>
+<span class="font-code-sm text-code-sm text-secondary">Parsed 44 entities • 2025-02-25</span>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between border-t-0 bg-surface-container-low/50 -mx-space-md -mb-space-md px-space-md py-2.5 rounded-b-xl">
+<span class="font-code-sm text-code-sm text-tertiary font-medium">ChromaDB Synced</span>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded text-secondary hover:text-primary" onclick="openDetailModal('PCB-Power-Distribution-v2.svg', 'Schematic', '96.2%', '44 fields', '2025-02-25 18:04:12 UTC', 'ChromaDB Indexed', 'rep_903')"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="p-1 rounded text-secondary hover:text-primary" onclick="triggerDownloadFeedback('Downloading PCB-Power-Distribution-v2.json')"><span class="material-symbols-outlined text-[18px]">download</span></button>
+<button class="p-1 rounded text-secondary hover:text-error" onclick="openDeleteModal('PCB-Power-Distribution-v2.svg', 'rep_903')"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Catalog Footer Status -->
+<div class="w-full flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-2 font-code-sm text-code-sm">
+<span>Row Security Context:</span>
+<span class="text-tertiary font-medium">Valid session token (Supabase auth.jwt())</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant cursor-not-allowed font-code-sm text-code-sm">Prev</button>
+<span class="px-3 py-1 font-code-sm text-code-sm font-medium text-on-surface">Page 1 of 1</span>
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant cursor-not-allowed font-code-sm text-code-sm">Next</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Toast Notification Center -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="toast">
+<div class="px-4 py-2.5 rounded-xl bg-inverse-surface text-inverse-on-surface shadow-2xl flex items-center gap-2 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed">info</span>
+<span id="toast-message">Action processed</span>
+</div>
+</div>
+<!-- VIEW REPORT DETAILS MODAL -->
+<div class="fixed inset-0 z-50 hidden bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-4" id="detail-modal">
+<div class="w-full max-w-3xl rounded-xl bg-surface-container-lowest shadow-2xl overflow-hidden flex flex-col max-h-[921px]">
+<!-- Header -->
+<div class="px-space-lg py-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="p-1.5 rounded-lg bg-primary-container text-on-primary">
+<span class="material-symbols-outlined text-[18px]">data_object</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface" id="modal-doc-title">Report Detail</h3>
+<span class="font-code-sm text-code-sm text-secondary" id="modal-doc-meta">Document metadata</span>
+</div>
+</div>
+<button class="p-1 rounded-lg text-secondary hover:text-on-surface" onclick="closeDetailModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Body / JSON Inspect -->
+<div class="p-space-lg overflow-y-auto flex flex-col gap-space-md">
+<!-- Badges Bar -->
+<div class="flex flex-wrap items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-1">
+<span class="font-code-sm text-code-sm text-secondary">Type:</span>
+<span class="font-code-sm text-code-sm font-semibold text-on-surface" id="modal-doc-type">Invoice</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1">
+<span class="font-code-sm text-code-sm text-secondary">Confidence:</span>
+<span class="font-code-sm text-code-sm font-bold text-tertiary" id="modal-doc-conf">99.4%</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1">
+<span class="font-code-sm text-code-sm text-secondary">Vector Store:</span>
+<span class="font-code-sm text-code-sm text-primary" id="modal-doc-store">ChromaDB</span>
+</div>
+</div>
+<!-- Parsed JSON Output Sandbox -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary font-medium uppercase">Extracted Schema (Structured JSON)</span>
+<button class="font-code-sm text-code-sm text-primary hover:underline flex items-center gap-1" onclick="copyModalJson()">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+              Copy JSON
+            </button>
+</div>
+<pre class="p-space-md rounded-lg bg-surface-container-low font-code-sm text-code-sm text-on-surface overflow-x-auto leading-relaxed select-all" id="modal-json-pre">{
+  "document_id": "rep_901",
+  "source_user": "alex.chen@example.com",
+  "rls_policy": "authenticated_user_access_only",
+  "ocr_model": "OCR-Core-4.2-Multimodal",
+  "attributes": {
+    "vendor": "Acme Industrial Logistics Corp",
+    "invoice_id": "INV-2025-8834",
+    "issue_date": "2025-02-28",
+    "currency": "USD",
+    "subtotal": 14200.00,
+    "tax_amount": 1278.00,
+    "total_due": 15478.00,
+    "line_items_count": 8,
+    "validation_checksum": "PASS (0.00 variance)"
+  },
+  "chromadb_vector": {
+    "dimensions": 1536,
+    "collection": "user_alex_chen_reports",
+    "cosine_similarity_ready": true
+  }
+}
+          </pre>
+</div>
+</div>
+<!-- Footer -->
+<div class="px-space-lg py-space-md bg-surface-container-low flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary">Read-only view cached from Edge Storage</span>
+<div class="flex items-center gap-2">
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-variant font-body-sm text-body-sm transition-colors" onclick="closeDetailModal()">
+            Close
+          </button>
+<button class="px-3.5 py-1.5 rounded-lg bg-primary-container text-on-primary hover:opacity-90 font-body-sm text-body-sm transition-opacity flex items-center gap-1.5" onclick="triggerDownloadFeedback('Exporting schema JSON...'); closeDetailModal();">
+<span class="material-symbols-outlined text-[16px]">download</span>
+            Download File
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- DELETE REPORT SAFETY MODAL -->
+<div class="fixed inset-0 z-50 hidden bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-4" id="delete-modal">
+<div class="w-full max-w-md rounded-xl bg-surface-container-lowest shadow-2xl p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm text-error">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px] text-on-error-container">warning</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Delete Extraction Report</h3>
+<span class="font-code-sm text-code-sm text-error">Irreversible Destructive Action</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Are you sure you want to delete <span class="font-semibold text-on-surface font-code-sm" id="delete-target-name"></span>? This will permanently wipe the extraction payload, image annotations, and ChromaDB vector embeddings tied to your user ID.
+      </p>
+<div class="p-space-sm rounded-lg bg-surface-container-low text-on-surface-variant font-code-sm text-code-sm flex flex-col gap-1">
+<div class="flex justify-between">
+<span>Target ID:</span>
+<span class="text-on-surface font-semibold font-code-sm" id="delete-target-id"></span>
+</div>
+<div class="flex justify-between">
+<span>Security Scope:</span>
+<span class="text-tertiary">DELETE WHERE user_id = auth.uid()</span>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2 pt-space-xs">
+<button class="px-3.5 py-2 rounded-lg bg-surface-container text-on-surface hover:bg-surface-variant font-body-sm text-body-sm transition-colors" onclick="closeDeleteModal()">
+          Cancel
+        </button>
+<button class="px-4 py-2 rounded-lg bg-error text-on-error hover:opacity-90 font-body-sm text-body-sm font-medium transition-opacity flex items-center gap-1.5" onclick="confirmDeletion()">
+<span class="material-symbols-outlined text-[16px]">delete_forever</span>
+          Confirm Deletion
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  let activeFilterType = 'all';
+  let pendingDeleteTargetId = null;
+
+  function switchView(view) {
+    const tableContainer = document.getElementById('table-container');
+    const gridContainer = document.getElementById('grid-container');
+    const tableBtn = document.getElementById('view-table-btn');
+    const gridBtn = document.getElementById('view-grid-btn');
+
+    if (view === 'table') {
+      tableContainer.classList.remove('hidden');
+      gridContainer.classList.add('hidden');
+      tableBtn.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+      tableBtn.classList.remove('text-on-surface-variant');
+      gridBtn.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+      gridBtn.classList.add('text-on-surface-variant');
+    } else {
+      tableContainer.classList.add('hidden');
+      gridContainer.classList.remove('hidden');
+      gridBtn.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+      gridBtn.classList.remove('text-on-surface-variant');
+      tableBtn.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+      tableBtn.classList.add('text-on-surface-variant');
+    }
+  }
+
+  function setFilterType(type) {
+    activeFilterType = type;
+    document.querySelectorAll('.type-pill').forEach(btn => {
+      if (btn.innerText.toLowerCase().includes(type.toLowerCase()) || (type === 'all' && btn.innerText.toLowerCase() === 'all')) {
+        btn.classList.add('bg-primary-container', 'text-on-primary');
+        btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+      } else {
+        btn.classList.remove('bg-primary-container', 'text-on-primary');
+        btn.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+      }
+    });
+    filterReports();
+  }
+
+  function filterReports() {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    const indexFilter = document.getElementById('index-filter').value;
+    const rows = document.querySelectorAll('.report-item');
+    const cards = document.querySelectorAll('.report-card');
+    let visibleCount = 0;
+
+    const matchesCondition = (name, type, status) => {
+      const matchesQuery = name.toLowerCase().includes(query) || type.toLowerCase().includes(query);
+      const matchesType = activeFilterType === 'all' || type.toLowerCase() === activeFilterType.toLowerCase();
+      const matchesIndex = indexFilter === 'all' || status.toLowerCase() === indexFilter.toLowerCase();
+      return matchesQuery && matchesType && matchesIndex;
+    };
+
+    rows.forEach(row => {
+      const name = row.getAttribute('data-name');
+      const type = row.getAttribute('data-type');
+      const status = row.getAttribute('data-status');
+      if (matchesCondition(name, type, status)) {
+        row.style.display = '';
+        visibleCount++;
+      } else {
+        row.style.display = 'none';
+      }
+    });
+
+    cards.forEach(card => {
+      const name = card.getAttribute('data-name');
+      const type = card.getAttribute('data-type');
+      const status = card.getAttribute('data-status');
+      if (matchesCondition(name, type, status)) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    document.getElementById('visible-count').innerText = visibleCount;
+  }
+
+  function toggleExportMenu() {
+    const menu = document.getElementById('export-menu');
+    menu.classList.toggle('hidden');
+  }
+
+  document.addEventListener('click', (e) => {
+    const wrapper = document.getElementById('export-dropdown-wrapper');
+    if (wrapper && !wrapper.contains(e.target)) {
+      document.getElementById('export-menu')?.classList.add('hidden');
+    }
+  });
+
+  function triggerDownloadFeedback(msg) {
+    showToast(msg);
+    document.getElementById('export-menu')?.classList.add('hidden');
+  }
+
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-message');
+    toastMsg.innerText = message;
+    toast.classList.remove('translate-y-24', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+    setTimeout(() => {
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-24', 'opacity-0');
+    }, 3200);
+  }
+
+  function openDetailModal(name, type, conf, fields, time, store, id) {
+    document.getElementById('modal-doc-title').innerText = name;
+    document.getElementById('modal-doc-meta').innerText = `${time} &bull; ${fields}`;
+    document.getElementById('modal-doc-type').innerText = type;
+    document.getElementById('modal-doc-conf').innerText = conf;
+    document.getElementById('modal-doc-store').innerText = store;
+    
+    // dynamically populate sample JSON with correct ID
+    const sample = {
+      document_id: id,
+      document_name: name,
+      user_id: "alex.chen@example.com",
+      rls_policy: "authenticated_user_access_only",
+      confidence: conf,
+      fields_count: fields,
+      vector_storage: store,
+      timestamp: time,
+      extracted_payload: {
+        status: "verified",
+        checksum: "valid_sha256"
+      }
+    };
+    document.getElementById('modal-json-pre').innerText = JSON.stringify(sample, null, 2);
+    document.getElementById('detail-modal').classList.remove('hidden');
+  }
+
+  function closeDetailModal() {
+    document.getElementById('detail-modal').classList.add('hidden');
+  }
+
+  function copyModalJson() {
+    const content = document.getElementById('modal-json-pre').innerText;
+    navigator.clipboard?.writeText(content).then(() => {
+      showToast('Schema JSON copied to clipboard');
+    }).catch(() => {
+      showToast('Schema JSON copied');
+    });
+  }
+
+  function openDeleteModal(name, id) {
+    pendingDeleteTargetId = id;
+    document.getElementById('delete-target-name').innerText = name;
+    document.getElementById('delete-target-id').innerText = id;
+    document.getElementById('delete-modal').classList.remove('hidden');
+  }
+
+  function closeDeleteModal() {
+    pendingDeleteTargetId = null;
+    document.getElementById('delete-modal').classList.add('hidden');
+  }
+
+  function confirmDeletion() {
+    if (!pendingDeleteTargetId) return;
+    const idToDelete = pendingDeleteTargetId;
+    closeDeleteModal();
+
+    // Visual removal from table and grid
+    const targetRow = document.querySelector(`.report-item[data-id="${idToDelete}"]`);
+    if (targetRow) {
+      targetRow.remove();
+    }
+    const targetCard = document.querySelector(`.report-card[data-id="${idToDelete}"]`);
+    if (targetCard) {
+      targetCard.remove();
+    }
+
+    showToast(`Deleted ${idToDelete} via Supabase RLS policy`);
+    filterReports();
+  }
+</script></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)]"><div class="w-full px-margin py-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm"><div class="flex items-center gap-space-md"><span class="font-body-sm text-body-sm text-on-surface-variant">Vision Extractor Workstation</span><span class="h-3 w-px bg-outline-variant"></span><span class="font-code-sm text-code-sm text-on-surface-variant">v2.4.0-preview</span><span class="h-3 w-px bg-outline-variant"></span><span class="font-code-sm text-code-sm text-tertiary font-medium">Engine: OCR-Core 4.2</span></div><div class="flex items-center gap-space-lg"><span class="font-body-sm text-body-sm text-on-surface-variant">Environment: Isolated Sandbox</span><span class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Vision Extractor Labs</span></div></div></footer></body></html>

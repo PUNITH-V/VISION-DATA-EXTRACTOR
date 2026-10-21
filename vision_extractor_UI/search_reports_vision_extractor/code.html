@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Vision Extractor</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-tertiary":"#ffffff","primary-container":"#4f46e5","on-primary":"#ffffff","surface-container-lowest":"#ffffff","surface-container-highest":"#d3e4fe","surface-variant":"#d3e4fe","secondary-container":"#dae2fd","on-secondary-fixed-variant":"#3f465c","on-secondary-container":"#5c647a","secondary-fixed":"#dae2fd","on-error-container":"#93000a","on-secondary":"#ffffff","on-surface":"#0b1c30","outline-variant":"#c7c4d8","on-background":"#0b1c30","error-container":"#ffdad6","primary-fixed":"#e2dfff","outline":"#777587","inverse-on-surface":"#eaf1ff","on-tertiary-fixed-variant":"#005236","surface-container-low":"#eff4ff","tertiary-fixed":"#6ffbbe","tertiary":"#005338","primary-fixed-dim":"#c3c0ff","inverse-primary":"#c3c0ff","surface-tint":"#4d44e3","on-primary-fixed-variant":"#3323cc","on-secondary-fixed":"#131b2e","surface-container-high":"#dce9ff","secondary-fixed-dim":"#bec6e0","secondary":"#565e74","surface":"#f8f9ff","tertiary-container":"#006e4b","on-surface-variant":"#464555","background":"#f8f9ff","on-error":"#ffffff","on-primary-fixed":"#0f0069","surface-container":"#e5eeff","tertiary-fixed-dim":"#4edea3","on-tertiary-fixed":"#002113","on-tertiary-container":"#67f4b7","primary":"#3525cd","surface-dim":"#cbdbf5","inverse-surface":"#213145","surface-bright":"#f8f9ff","on-primary-container":"#dad7ff","error":"#ba1a1a"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"gutter-mobile":"0.75rem","space-sm":"0.5rem","margin-mobile":"1rem","space-md":"1rem","gutter":"1.5rem","space-xl":"2.5rem","space-lg":"1.5rem","margin":"2rem","space-xs":"0.25rem"},"fontFamily":{"label-md":["Inter"],"body-sm":["Inter"],"headline-lg":["Geist"],"code-sm":["JetBrains Mono"],"body-lg":["Inter"],"headline-sm":["Geist"],"headline-lg-mobile":["Geist"],"display":["Geist"],"code-md":["JetBrains Mono"],"headline-md":["Geist"],"body-md":["Inter"]},"fontSize":{"label-md":["0.75rem",{"lineHeight":"1","letterSpacing":"0.02em","fontWeight":"600"}],"body-sm":["0.75rem",{"lineHeight":"1.5","letterSpacing":"0.01em","fontWeight":"400"}],"headline-lg":["2rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"600"}],"code-sm":["0.6875rem",{"lineHeight":"1.4","letterSpacing":"0em","fontWeight":"500"}],"body-lg":["1rem",{"lineHeight":"1.6","letterSpacing":"0em","fontWeight":"400"}],"headline-sm":["1rem",{"lineHeight":"1.4","letterSpacing":"-0.005em","fontWeight":"500"}],"headline-lg-mobile":["1.5rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"600"}],"display":["3rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"600"}],"code-md":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-md":["1.25rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"500"}],"body-md":["0.875rem",{"lineHeight":"1.5","letterSpacing":"0em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[18px]">document_scanner</span></div><span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Vision Extractor</span></div><div class="hidden sm:inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-secondary-container/60"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span><span class="font-code-sm text-code-sm text-on-secondary-container font-medium">Mock Dev Mode</span></div></div><nav class="hidden xl:flex items-center gap-space-xs px-1 py-1 rounded-lg bg-surface-container-low" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg shadow-sm"><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="overview" href="#">Overview</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="extract-images" href="#">Extract Images</a><a aria-current="page" class="px-space-md py-1.5 transition-all bg-primary-container text-on-primary font-medium rounded-lg shadow-sm" data-path="search-reports" href="#">Search Reports</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="ask-your-images" href="#">Ask Your Images</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="reports" href="#">Reports</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="settings" href="#">Settings</a></nav><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-low"><span class="h-2 w-2 rounded-full bg-error"></span><span class="font-code-sm text-code-sm text-on-surface-variant">FastAPI: Disconnected (Mock)</span></div><button aria-label="Toggle theme" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" id="theme-toggle-btn" onclick="document.documentElement.classList.toggle('dark');" type="button"><span class="material-symbols-outlined text-[20px] dark:hidden">light_mode</span><span class="material-symbols-outlined text-[20px] hidden dark:inline">dark_mode</span></button><div class="relative flex items-center gap-space-sm pl-space-xs"><div class="hidden md:flex flex-col text-right"><span class="font-body-sm text-body-sm text-on-surface font-medium leading-none">Alex Chen</span><span class="font-code-sm text-code-sm text-on-surface-variant leading-none mt-1">alex.chen@example.com</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/30" src="https://lh3.googleusercontent.com/aida/AEtjO1WrygqNG8DoBkyZmVOAzPcSdGRHbjzFnHSJSvadj8SyfRiZY1mIbMpA1LMAO0odOXCSvWPwGe1djU4lfeAfm0tkdFtMy831tM7p4HJhI63iXkp6CRVSWEw_9g1zmVx0_2lq3dBwlj8cfJdPaq4a-17MGZWXmrxtx8CHcBWV4HSvWR3hRE0nhQ1DzvE35INVWoY23Q8mwRUL283aTvbXGriEN2QZIh6zXjiMT7sfaOEgsCREtGrBWbonrJ4"/><span class="material-symbols-outlined text-[16px] text-on-surface-variant hidden md:inline">expand_more</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<div class="w-full bg-surface-container-low/60 backdrop-blur-sm">
+<div class="max-w-[1440px] mx-auto px-margin py-space-xl flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm text-tertiary">
+<span class="material-symbols-outlined text-[18px]">saved_search</span>
+<span class="font-code-sm text-code-sm uppercase tracking-wider font-semibold">ChromaDB Vector Index • 384-D Space</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">Semantic Report Explorer</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+            Query across visual layout tokens, dense tabular OCR chunks, and multimodal image embeddings with zero-shot natural language.
+          </p>
+</div>
+<div class="flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-space-xs rounded-xl shadow-sm">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-medium">Synced: 1,842 Documents</span>
+</div>
+<span class="text-outline-variant font-light">|</span>
+<span class="font-code-sm text-code-sm text-primary font-medium">all-MiniLM-L6-v2</span>
+</div>
+</div>
+<div class="relative w-full">
+<div class="relative flex items-center bg-surface-container-lowest rounded-xl shadow-md transition-shadow focus-within:shadow-xl focus-within:ring-2 focus-within:ring-primary/20">
+<span class="material-symbols-outlined absolute left-space-md text-[22px] text-primary">search</span>
+<input class="w-full bg-transparent pl-12 pr-32 py-4 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none" id="vectorSearchInput" placeholder='Search by visual description, extracted keywords, or invoice numbers (e.g., "invoices from Apex Logistics with battery components")...' type="text" value="invoices from Apex Logistics with battery components"/>
+<div class="absolute right-3 flex items-center gap-space-xs">
+<kbd class="hidden sm:inline-flex items-center gap-0.5 px-2 py-1 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">⌘K</kbd>
+<button class="bg-primary text-on-primary hover:bg-primary-container px-space-md py-2 rounded-lg font-label-md text-label-md flex items-center gap-1.5 transition-colors shadow-sm">
+<span>Execute</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md pt-space-xs">
+<div class="lg:col-span-6 flex flex-wrap items-center gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mr-1">Document Type</span>
+<button class="filter-chip active px-space-md py-1.5 rounded-full font-label-md text-label-md bg-primary text-on-primary shadow-sm transition-all">All</button>
+<button class="filter-chip px-space-md py-1.5 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all">Invoices</button>
+<button class="filter-chip px-space-md py-1.5 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all">Equipment Specs</button>
+<button class="filter-chip px-space-md py-1.5 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all">Medical/Lab</button>
+<button class="filter-chip px-space-md py-1.5 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all">Receipts</button>
+</div>
+<div class="lg:col-span-3 flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-2 rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">calendar_today</span>
+<div class="flex flex-col flex-1">
+<span class="font-code-sm text-code-sm text-on-surface-variant leading-none">Date Window</span>
+<select class="bg-transparent font-body-sm text-body-sm text-on-surface font-medium focus:outline-none cursor-pointer mt-0.5">
+<option>Last 30 Days (Active)</option>
+<option>Last 90 Days</option>
+<option>Fiscal Year 2024-2025</option>
+<option>Custom Vector Cohort</option>
+</select>
+</div>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span>
+</div>
+<div class="lg:col-span-3 flex flex-col justify-center bg-surface-container-lowest px-space-md py-2 rounded-lg shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<span class="font-code-sm text-code-sm text-on-surface-variant font-medium">Distance Threshold (Max)</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant" title="Filter vectors by semantic closeness">info</span>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-primary" id="thresholdVal">≤ 0.280</span>
+</div>
+<div class="relative flex items-center mt-1.5">
+<input class="w-full h-1.5 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" id="distSlider" max="0.50" min="0.05" oninput="document.getElementById('thresholdVal').innerText = '≤ ' + parseFloat(this.value).toFixed(3)" step="0.005" type="range" value="0.28"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-[1440px] mx-auto w-full px-margin py-space-xl flex flex-col gap-space-lg">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Vector Match Candidates</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-code-sm text-code-sm font-semibold">2 Primary Clusters Found</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-body-sm text-body-sm text-on-surface-variant hidden md:inline">Sort by: <strong class="text-on-surface font-medium">Nearest Geometric Neighbor</strong></span>
+<div class="flex items-center bg-surface-container rounded-lg p-0.5">
+<button class="p-1.5 rounded bg-surface-container-lowest text-primary shadow-sm" title="Detailed Card List"><span class="material-symbols-outlined text-[18px]">view_agenda</span></button>
+<button class="p-1.5 rounded text-on-surface-variant hover:text-on-surface" title="Raw Embedding Heatmap"><span class="material-symbols-outlined text-[18px]">grain</span></button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-lg">
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg transition-all duration-200 hover:shadow-lg">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<div class="lg:col-span-3 flex flex-col gap-space-sm">
+<div class="relative w-full h-56 rounded-lg overflow-hidden bg-surface-container group">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Monochrome scanned industrial warehouse receiving receipt titled Apex Logistics with visible barcodes, tabular item lists detailing high-capacity lithium polymer battery modules and shipping crate weights, stamped with official inspection seals under crisp studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG4h6uiVAgHceQDvfSV1WWCao1_xbo5sg1q8e9dgWU3KS9EySjzr7zRhhXMSxcceiNeiOl2VbXTo9HhCyy7YJQ1Jc5le9Qq0m8lhQewW_cu6dgZBTMg7sqX6VD6a3hSPTWka_j8noiWpviOINQrpWKTDPiz9znHY_8mTC3PNdNw-FmkbFoHj8H-JloGi8rO6FhHDe7vb9K2H-ZVsGMsws0ncOdfLEEXtbYWJvbm1yUY8TTdFxR6E5B"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-inverse-surface/20 to-transparent flex flex-col justify-end p-3">
+<span class="font-code-sm text-code-sm text-on-primary bg-primary/90 backdrop-blur-md px-2 py-0.5 rounded w-max">
+                  Vision Bounding Boxes: 14 Active
+                </span>
+</div>
+</div>
+<div class="flex items-center justify-between px-1">
+<span class="font-code-sm text-code-sm text-on-surface-variant">OCR Engine Core: 4.2</span>
+<span class="font-code-sm text-code-sm text-tertiary font-medium">Confidence: 99.1%</span>
+</div>
+</div>
+<div class="lg:col-span-9 flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-sm">
+<div class="flex flex-wrap items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<h2 class="font-headline-md text-headline-md font-semibold text-on-surface tracking-tight">warehouse_receipt_08.png</h2>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-code-sm text-code-sm font-medium">Report #REP-4029</span>
+</div>
+<div class="flex items-center gap-2 bg-tertiary-container/10 px-3 py-1 rounded-full">
+<span class="h-2 w-2 rounded-full bg-tertiary"></span>
+<span class="font-code-sm text-code-sm font-semibold text-tertiary">Cosine Distance: 0.142</span>
+<span class="text-tertiary text-[10px] font-bold uppercase tracking-wider">High Match</span>
+</div>
+</div>
+<div class="bg-surface-container-low/70 rounded-lg p-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">psychology</span>
+                    Contextual Semantic Snippet Chunk (#CHUNK-09)
+                  </span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Vectors: [0.082, -0.412, ... +382]</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                  "...Inbound shipment from <mark class="bg-primary/15 text-primary font-semibold px-1 rounded">Apex Logistics</mark> Hub containing <mark class="bg-primary/15 text-primary font-semibold px-1 rounded">lithium battery packs</mark> and structural casings. Certified for heavy industrial energy backup arrays. Verification stamp approved..."
+                </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs pt-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase mr-1">Extracted Entities:</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container text-on-surface font-code-sm text-code-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">local_shipping</span>
+                  Logistics
+                </span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container text-on-surface font-code-sm text-code-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">business</span>
+                  Apex
+                </span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container text-on-surface font-code-sm text-code-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">tag</span>
+                  TRK-981042-X
+                </span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container text-on-surface font-code-sm text-code-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">description</span>
+                  Manifest
+                </span>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-xs">
+<div class="flex items-center gap-space-md text-on-surface-variant font-code-sm text-code-sm">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">access_time</span>
+                  Parsed 12 mins ago
+                </span>
+<span>•</span>
+<span>Format: TIFF/PNG 300 DPI</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="bg-surface-container-low hover:bg-surface-container text-on-surface px-space-md py-2 rounded-lg font-label-md text-label-md flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Open Image Source</span>
+</button>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-space-md py-2 rounded-lg font-label-md text-label-md flex items-center gap-1.5 transition-colors shadow-sm">
+<span>View Full Report</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg transition-all duration-200 hover:shadow-lg">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<div class="lg:col-span-3 flex flex-col gap-space-sm">
+<div class="relative w-full h-56 rounded-lg overflow-hidden bg-surface-container group">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Detailed technical blueprint and schematic datasheet of a 48V modular power storage battery unit with cross-section diagrams, voltage tolerances, thermal thresholds, and mechanical dimension callouts in navy blue and silver grey." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRws5VfaKYtouRNuD_FBGo-jwKckowGW-POUD1OyTlgKePORTD5_fzRqHSjTTsOM7ncUMVAQOCFUPWs48QEC2mZdEOM6GxNt2i5ROf7Th46UkSQ5uyVpa5BXt7tsKelXfugpXXjR5MdhUK3B9xXaofNmJq4aGc3HJlOkQ0iCzFIB7QXnp5Gr7ItCk_pI97JyRbTJvKj4foQaq4VNKx9lyDaIH_2XJ13lX-JnOUyFy3meLj5OJf4Nz2"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-inverse-surface/20 to-transparent flex flex-col justify-end p-3">
+<span class="font-code-sm text-code-sm text-on-primary bg-primary/90 backdrop-blur-md px-2 py-0.5 rounded w-max">
+                  Vision Bounding Boxes: 28 Active
+                </span>
+</div>
+</div>
+<div class="flex items-center justify-between px-1">
+<span class="font-code-sm text-code-sm text-on-surface-variant">OCR Engine Core: 4.2</span>
+<span class="font-code-sm text-code-sm text-tertiary font-medium">Confidence: 97.8%</span>
+</div>
+</div>
+<div class="lg:col-span-9 flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-sm">
+<div class="flex flex-wrap items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<h2 class="font-headline-md text-headline-md font-semibold text-on-surface tracking-tight">battery_spec_sheet_rev2.jpg</h2>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-code-sm text-code-sm font-medium">Report #REP-3891</span>
+</div>
+<div class="flex items-center gap-2 bg-secondary-container/50 px-3 py-1 rounded-full">
+<span class="h-2 w-2 rounded-full bg-primary"></span>
+<span class="font-code-sm text-code-sm font-semibold text-on-surface">Cosine Distance: 0.218</span>
+<span class="text-primary text-[10px] font-bold uppercase tracking-wider">Relevant Match</span>
+</div>
+</div>
+<div class="bg-surface-container-low/70 rounded-lg p-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">psychology</span>
+                    Contextual Semantic Snippet Chunk (#CHUNK-03)
+                  </span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Vectors: [-0.114, 0.389, ... +382]</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                  "...Technical specifications for <mark class="bg-primary/15 text-primary font-semibold px-1 rounded">48V modular power storage units</mark>. Designed to interface with automated material handling vehicles and remote distribution warehouse infrastructures..."
+                </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs pt-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase mr-1">Extracted Entities:</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container text-on-surface font-code-sm text-code-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">memory</span>
+                  48V-Modular
+                </span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container text-on-surface font-code-sm text-code-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">bolt</span>
+                  Power Cells
+                </span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container text-on-surface font-code-sm text-code-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">build</span>
+                  Hardware Spec
+                </span>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-xs">
+<div class="flex items-center gap-space-md text-on-surface-variant font-code-sm text-code-sm">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">access_time</span>
+                  Parsed 2 hours ago
+                </span>
+<span>•</span>
+<span>Format: JPEG 600 DPI</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="bg-primary hover:bg-primary-container text-on-primary px-space-md py-2 rounded-lg font-label-md text-label-md flex items-center gap-1.5 transition-colors shadow-sm">
+<span>View Full Report</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative overflow-hidden bg-surface-container-low rounded-xl p-space-md shadow-sm">
+<div class="flex items-start gap-space-md">
+<div class="p-2 rounded-lg bg-primary/10 text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Technical Note on Vector Search</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Cosine distance represents geometric vector angle distance in ChromaDB 384-dimensional space, not a probability score. Lower distance indicates higher semantic relevance. Values approaching 0 denote orthogonal alignment with target extraction embeddings.
+          </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for filter chips
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', function() {
+      document.querySelectorAll('.filter-chip').forEach(c => {
+        c.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+        c.classList.add('bg-surface-container-lowest', 'text-on-surface-variant');
+      });
+      this.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant');
+      this.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+    });
+  });
+</script></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)]"><div class="w-full px-margin py-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm"><div class="flex items-center gap-space-md"><span class="font-body-sm text-body-sm text-on-surface-variant">Vision Extractor Workstation</span><span class="h-3 w-px bg-outline-variant"></span><span class="font-code-sm text-code-sm text-on-surface-variant">v2.4.0-preview</span><span class="h-3 w-px bg-outline-variant"></span><span class="font-code-sm text-code-sm text-tertiary font-medium">Engine: OCR-Core 4.2</span></div><div class="flex items-center gap-space-lg"><span class="font-body-sm text-body-sm text-on-surface-variant">Environment: Isolated Sandbox</span><span class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Vision Extractor Labs</span></div></div></footer></body></html>

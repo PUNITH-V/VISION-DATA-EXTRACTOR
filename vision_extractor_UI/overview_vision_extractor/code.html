@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Vision Extractor</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-tertiary":"#ffffff","primary-container":"#4f46e5","on-primary":"#ffffff","surface-container-lowest":"#ffffff","surface-container-highest":"#d3e4fe","surface-variant":"#d3e4fe","secondary-container":"#dae2fd","on-secondary-fixed-variant":"#3f465c","on-secondary-container":"#5c647a","secondary-fixed":"#dae2fd","on-error-container":"#93000a","on-secondary":"#ffffff","on-surface":"#0b1c30","outline-variant":"#c7c4d8","on-background":"#0b1c30","error-container":"#ffdad6","primary-fixed":"#e2dfff","outline":"#777587","inverse-on-surface":"#eaf1ff","on-tertiary-fixed-variant":"#005236","surface-container-low":"#eff4ff","tertiary-fixed":"#6ffbbe","tertiary":"#005338","primary-fixed-dim":"#c3c0ff","inverse-primary":"#c3c0ff","surface-tint":"#4d44e3","on-primary-fixed-variant":"#3323cc","on-secondary-fixed":"#131b2e","surface-container-high":"#dce9ff","secondary-fixed-dim":"#bec6e0","secondary":"#565e74","surface":"#f8f9ff","tertiary-container":"#006e4b","on-surface-variant":"#464555","background":"#f8f9ff","on-error":"#ffffff","on-primary-fixed":"#0f0069","surface-container":"#e5eeff","tertiary-fixed-dim":"#4edea3","on-tertiary-fixed":"#002113","on-tertiary-container":"#67f4b7","primary":"#3525cd","surface-dim":"#cbdbf5","inverse-surface":"#213145","surface-bright":"#f8f9ff","on-primary-container":"#dad7ff","error":"#ba1a1a"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"gutter-mobile":"0.75rem","space-sm":"0.5rem","margin-mobile":"1rem","space-md":"1rem","gutter":"1.5rem","space-xl":"2.5rem","space-lg":"1.5rem","margin":"2rem","space-xs":"0.25rem"},"fontFamily":{"label-md":["Inter"],"body-sm":["Inter"],"headline-lg":["Geist"],"code-sm":["JetBrains Mono"],"body-lg":["Inter"],"headline-sm":["Geist"],"headline-lg-mobile":["Geist"],"display":["Geist"],"code-md":["JetBrains Mono"],"headline-md":["Geist"],"body-md":["Inter"]},"fontSize":{"label-md":["0.75rem",{"lineHeight":"1","letterSpacing":"0.02em","fontWeight":"600"}],"body-sm":["0.75rem",{"lineHeight":"1.5","letterSpacing":"0.01em","fontWeight":"400"}],"headline-lg":["2rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"600"}],"code-sm":["0.6875rem",{"lineHeight":"1.4","letterSpacing":"0em","fontWeight":"500"}],"body-lg":["1rem",{"lineHeight":"1.6","letterSpacing":"0em","fontWeight":"400"}],"headline-sm":["1rem",{"lineHeight":"1.4","letterSpacing":"-0.005em","fontWeight":"500"}],"headline-lg-mobile":["1.5rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"600"}],"display":["3rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"600"}],"code-md":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-md":["1.25rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"500"}],"body-md":["0.875rem",{"lineHeight":"1.5","letterSpacing":"0em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[18px]">document_scanner</span></div><span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Vision Extractor</span></div><div class="hidden sm:inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-secondary-container/60"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span><span class="font-code-sm text-code-sm text-on-secondary-container font-medium">Mock Dev Mode</span></div></div><nav class="hidden xl:flex items-center gap-space-xs px-1 py-1 rounded-lg bg-surface-container-low" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg shadow-sm"><a aria-current="page" class="px-space-md py-1.5 transition-all bg-primary-container text-on-primary font-medium rounded-lg shadow-sm" data-path="overview" href="#">Overview</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="extract-images" href="#">Extract Images</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="search-reports" href="#">Search Reports</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="ask-your-images" href="#">Ask Your Images</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="reports" href="#">Reports</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="settings" href="#">Settings</a></nav><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-low"><span class="h-2 w-2 rounded-full bg-error"></span><span class="font-code-sm text-code-sm text-on-surface-variant">FastAPI: Disconnected (Mock)</span></div><button aria-label="Toggle theme" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" id="theme-toggle-btn" onclick="document.documentElement.classList.toggle('dark');" type="button"><span class="material-symbols-outlined text-[20px] dark:hidden">light_mode</span><span class="material-symbols-outlined text-[20px] hidden dark:inline">dark_mode</span></button><div class="relative flex items-center gap-space-sm pl-space-xs"><div class="hidden md:flex flex-col text-right"><span class="font-body-sm text-body-sm text-on-surface font-medium leading-none">Alex Chen</span><span class="font-code-sm text-code-sm text-on-surface-variant leading-none mt-1">alex.chen@example.com</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/30" src="https://lh3.googleusercontent.com/aida/AEtjO1WrygqNG8DoBkyZmVOAzPcSdGRHbjzFnHSJSvadj8SyfRiZY1mIbMpA1LMAO0odOXCSvWPwGe1djU4lfeAfm0tkdFtMy831tM7p4HJhI63iXkp6CRVSWEw_9g1zmVx0_2lq3dBwlj8cfJdPaq4a-17MGZWXmrxtx8CHcBWV4HSvWR3hRE0nhQ1DzvE35INVWoY23Q8mwRUL283aTvbXGriEN2QZIh6zXjiMT7sfaOEgsCREtGrBWbonrJ4"/><span class="material-symbols-outlined text-[16px] text-on-surface-variant hidden md:inline">expand_more</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<!-- Subtle Ambient Glow Canvas Backdrop (Contained) -->
+<div class="relative w-full overflow-hidden px-gutter-mobile md:px-margin py-space-lg flex flex-col gap-space-xl">
+<!-- Top Hero Section with Asymmetric Layout & Quick Badges -->
+<section class="relative flex flex-col lg:flex-row items-start lg:items-end justify-between gap-space-lg pt-space-xs">
+<div class="flex flex-col max-w-2xl">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-code-sm text-code-sm uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+            Workspace / Alex Chen
+          </span>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-medium">Session: #VE-8831</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-semibold">
+          Welcome back, Alex
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1.5">
+          Extract structured schema, search image embeddings, and query visual datasets with AI.
+        </p>
+</div>
+<!-- Action Row with High Elevation & Depth -->
+<div class="flex flex-wrap items-center gap-space-sm w-full sm:w-auto">
+<a class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm font-medium transition-all shadow-sm" data-path="ask-your-images" href="#">
+<span class="material-symbols-outlined text-[18px] text-primary">chat_spark</span>
+<span>Ask Your Images</span>
+</a>
+<a class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm font-medium transition-all shadow-sm" data-path="search-reports" href="#">
+<span class="material-symbols-outlined text-[18px] text-secondary">manage_search</span>
+<span>Search Vector Index</span>
+</a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-space-lg py-2.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-body-sm text-body-sm font-semibold transition-all shadow-md hover:shadow-lg active:scale-[0.99]" data-path="extract-images" href="#">
+<span class="material-symbols-outlined text-[18px]">add_a_photo</span>
+<span>+ New Extraction</span>
+</a>
+</div>
+</section>
+<!-- Restrained Minimalist Environment & System Status Banner -->
+<section class="w-full rounded-xl bg-surface-container-low shadow-sm px-space-md py-space-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-space-md">
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium">Pipeline Status</span>
+<span class="hidden sm:inline text-outline-variant font-code-sm text-code-sm">•</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<strong class="font-medium text-on-surface">Development Mode:</strong> Mock pipeline active. Real Supabase auth connected. FastAPI backend ready to bridge.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-space-md self-end md:self-auto shrink-0">
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded bg-surface-container-highest">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">Supabase Auth: Active</span>
+</div>
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded bg-secondary-container">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-code-sm text-code-sm text-on-secondary-container font-medium">Local IPC</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Metrics Bento Grid (High Tactility, No Fake Curves) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Tile 1 -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant font-medium">Total Extractions</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-primary">
+<span class="material-symbols-outlined text-[18px]">auto_stories</span>
+</span>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display text-display text-on-surface font-semibold tracking-tight">14</span>
+<span class="font-code-sm text-code-sm text-tertiary font-medium">+3 today</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1 mt-space-sm overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 70%"></div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block mt-1">Structured schemas generated</span>
+</div>
+</div>
+<!-- Tile 2 -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant font-medium">Indexed Images</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-secondary">
+<span class="material-symbols-outlined text-[18px]">image_search</span>
+</span>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display text-display text-on-surface font-semibold tracking-tight">12</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">PNG / JPEG / WebP</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1 mt-space-sm overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 85%"></div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block mt-1">Synchronized to multimodal cache</span>
+</div>
+</div>
+<!-- Tile 3 -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant font-medium">Avg Confidence</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-tertiary">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</span>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display text-display text-tertiary font-semibold tracking-tight">98.2%</span>
+<span class="inline-flex items-center text-tertiary font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> 0.4%
+            </span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1 mt-space-sm overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 98.2%"></div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block mt-1">Cross-validation threshold: 90%</span>
+</div>
+</div>
+<!-- Tile 4 -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant font-medium">Vector Store</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-primary">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+</span>
+</div>
+<div class="mt-space-md">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">ChromaDB</span>
+<span class="font-code-sm text-code-sm text-primary font-medium mt-0.5">384-dimensional CLIP</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mt-space-sm pt-1">
+<span>Cos-sim metric</span>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">3.4ms latency</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Empty State Guidance Tooltip / Callout Bar -->
+<section class="relative w-full rounded-xl bg-surface-container p-space-md shadow-sm overflow-hidden">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md relative z-10">
+<div class="flex items-start sm:items-center gap-space-md">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-primary uppercase tracking-wide">Operator Guidance</span>
+<p class="font-body-md text-body-md text-on-surface font-medium mt-0.5">
+              New account? Drag &amp; drop any PNG or JPEG into <a class="text-primary hover:underline font-semibold" data-path="extract-images" href="#">Extract Images</a> to test the extraction schema.
+            </p>
+</div>
+</div>
+<a class="shrink-0 px-space-md py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm font-medium transition-colors shadow-sm" data-path="extract-images" href="#">
+          Open Canvas →
+        </a>
+</div>
+<!-- Background subtle technical wireframe glyph -->
+<span class="material-symbols-outlined absolute -right-6 -bottom-8 text-[110px] text-surface-container-highest/40 select-none pointer-events-none">
+        drag_click
+      </span>
+</section>
+<!-- Recent Extraction Reports & Live Visual Sandbox Mosaic -->
+<section class="flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight">
+            Recent Reports &amp; Parsing Artifacts
+          </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Dense OCR entities, bounding polygons, and semantic key-value records.
+          </p>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Sort: Most Recent</span>
+<a class="inline-flex items-center gap-1 font-body-sm text-body-sm text-primary hover:text-primary-container font-medium" data-path="reports" href="#">
+<span>View all 14 reports</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Structured Cards Mosaic List -->
+<div class="flex flex-col gap-space-sm">
+<!-- Report Item 1: Invoice Scan -->
+<article class="group rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all p-space-md shadow-sm">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<!-- Left Info & Visual Thumbnail -->
+<div class="flex items-start sm:items-center gap-space-md min-w-0">
+<div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden bg-surface-container shrink-0 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Monochrome scanned commercial invoice paper on clean neutral grey desk with structured table lines and stamps, technical macro perspective" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASRQGAi6nswnkXCuCfeW1M6tulLjsKuliVrvMxI85m8gEjtbwmZvMAc7VcuTziICB1U38vtZUM1ZTLEmdbGOHzUp_rXWa9MWX6P1Gz4l7ML5Z1KVaXk6kNu_a8rMthQXQohDJkb8sxp1UUypj8EenW1bS1X0bStXVqDHamHFdyRIevB3lBgMemwRoq4zywXWH5dQ2DZi5Fu7ttlizda5ezwBh-TH_IVT7onpuEaDN5h4yysSEaoZov"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply pointer-events-none"></div>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="font-code-md text-code-md text-on-surface font-semibold truncate">
+                    Invoice_Scan_9402.png
+                  </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-md font-label-md bg-secondary-container text-on-secondary-container">
+                    Document / Invoice
+                  </span>
+</div>
+<div class="flex flex-wrap items-center gap-y-1 gap-x-space-md mt-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary">data_object</span>
+<span>Extracted <strong>8 key-values</strong></span>
+</span>
+<span class="text-outline-variant">•</span>
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">schedule</span>
+<span>2 hours ago</span>
+</span>
+<span class="text-outline-variant hidden sm:inline">•</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant hidden sm:inline">1.4 MB · PNG</span>
+</div>
+</div>
+</div>
+<!-- Right: Confidence Metric & Action -->
+<div class="flex items-center justify-between lg:justify-end gap-space-lg shrink-0 pt-space-xs lg:pt-0">
+<div class="flex flex-col items-start lg:items-end">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-code-md text-code-md text-on-surface font-semibold">99.1%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">conf</span>
+</div>
+<span class="font-code-sm text-code-sm text-tertiary font-medium">Deterministic OCR</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm font-medium transition-colors shadow-sm" onclick="alert('Report Invoice_Scan_9402 parsed entities: Subtotal, VAT, Merchant ID, Date, PO Number.')" type="button">
+                  View Report
+                </button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant transition-colors" title="Export JSON" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Report Item 2: Equipment Inspection -->
+<article class="group rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all p-space-md shadow-sm">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<!-- Left Info & Visual Thumbnail -->
+<div class="flex items-start sm:items-center gap-space-md min-w-0">
+<div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden bg-surface-container shrink-0 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Industrial metal telemetry pressure gauge and metallic valve inspection panel in harsh precision laboratory lighting" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRPIboDsyOgSS0hM7QZ50bc7voQvgJzbUVpwt76fB9XIBgM2g0lmgu1xl9uc3CkPjSFSwO4aBi_WyDSsRcGF0fm9hrxaQOKP3AORKrNFDuc7-s6YO7KkwnNnaPQKuTHD-EvP90_aUJRnolFik2fm0kKQSACLvdWlyWLfRVxuKYGpf_UR5pRlIV5p2EQBJ7z5eFE8Um7zhAq1HZv_evCk02cI7r7az4xUHi3gVh-s5J-Splpq5CnmAR"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply pointer-events-none"></div>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="font-code-md text-code-md text-on-surface font-semibold truncate">
+                    Equipment_Inspection_B4.jpg
+                  </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-md font-label-md bg-secondary-container text-on-secondary-container">
+                    Technical Spec
+                  </span>
+</div>
+<div class="flex flex-wrap items-center gap-y-1 gap-x-space-md mt-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">manufacturing</span>
+<span>Extracted <strong>14 attributes</strong></span>
+</span>
+<span class="text-outline-variant">•</span>
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">schedule</span>
+<span>Yesterday</span>
+</span>
+<span class="text-outline-variant hidden sm:inline">•</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant hidden sm:inline">3.8 MB · JPEG</span>
+</div>
+</div>
+</div>
+<!-- Right: Confidence Metric & Action -->
+<div class="flex items-center justify-between lg:justify-end gap-space-lg shrink-0 pt-space-xs lg:pt-0">
+<div class="flex flex-col items-start lg:items-end">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-code-md text-code-md text-on-surface font-semibold">96.4%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">conf</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-medium">BBox Polygon Ready</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm font-medium transition-colors shadow-sm" onclick="alert('Report Equipment_Inspection_B4: 14 structural telemetry attributes verified with 96.4% confidence.')" type="button">
+                  View Report
+                </button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant transition-colors" title="Export JSON" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Report Item 3: Product Catalog Sample -->
+<article class="group rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all p-space-md shadow-sm">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<!-- Left Info & Visual Thumbnail -->
+<div class="flex items-start sm:items-center gap-space-md min-w-0">
+<div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden bg-surface-container shrink-0 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Modern consumer electronics product box packaging with barcode, SKU label, and regulatory icons in clean studio lighting" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9Ox9q1yFXe5BUmmaG7Yo1eljjuaw0XVWRDloNKwafMPO1cneDd4_AlFI0YR-2Bykf_Is-zMNCcRY0YlAyj2ijIrNBJVNzAz1B1gZw4IYLK_LkaI0vQ-bgWGBhT2ftSV9w-1Znuh3DvXBYrMUcn7R8fXBj_u5GRpel3nPrNKAnlx58MVpAPLm7qzmKugVuGXBojMtbtI_YGeXLSZDaDg4itJBMmbB3abKuisaMEwgmVRzUQUS_fpAy"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply pointer-events-none"></div>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="font-code-md text-code-md text-on-surface font-semibold truncate">
+                    Product_Catalog_Sample.png
+                  </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-md font-label-md bg-secondary-container text-on-secondary-container">
+                    Retail SKU
+                  </span>
+</div>
+<div class="flex flex-wrap items-center gap-y-1 gap-x-space-md mt-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary">qr_code_2</span>
+<span>Extracted <strong>5 fields</strong></span>
+</span>
+<span class="text-outline-variant">•</span>
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">schedule</span>
+<span>3 days ago</span>
+</span>
+<span class="text-outline-variant hidden sm:inline">•</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant hidden sm:inline">890 KB · PNG</span>
+</div>
+</div>
+</div>
+<!-- Right: Confidence Metric & Action -->
+<div class="flex items-center justify-between lg:justify-end gap-space-lg shrink-0 pt-space-xs lg:pt-0">
+<div class="flex flex-col items-start lg:items-end">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-code-md text-code-md text-on-surface font-semibold">98.7%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">conf</span>
+</div>
+<span class="font-code-sm text-code-sm text-tertiary font-medium">Barcode + Text Match</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm font-medium transition-colors shadow-sm" onclick="alert('Report Product_Catalog_Sample: UPC, Serial No., Brand, Dimensions extracted.')" type="button">
+                  View Report
+                </button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant transition-colors" title="Export JSON" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Quick Tools & Multimodal Query Preview (Tactile Technical Callouts) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-space-md pb-space-lg">
+<!-- Card 1 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-sm text-primary mb-2">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Schema Synthesizer</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Define zero-shot Pydantic models. Our vision-language pipeline maps visually segmented keys directly to strict JSON definitions.
+          </p>
+</div>
+<div class="mt-space-md flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-tertiary font-medium">JSON-Schema v7 Compliant</span>
+<a class="font-body-sm text-body-sm text-primary hover:underline font-medium" data-path="settings" href="#">Configure</a>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-sm text-primary mb-2">
+<span class="material-symbols-outlined text-[20px]">grain</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Embeddings Explorer</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Explore 12 indexed items in ChromaDB using natural language queries like "Find all water utility bills above $120".
+          </p>
+</div>
+<div class="mt-space-md flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary font-medium">Index size: 48 KB</span>
+<a class="font-body-sm text-body-sm text-primary hover:underline font-medium" data-path="search-reports" href="#">Run Query</a>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-sm text-primary mb-2">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Confidence Thresholds</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Auto-flag extractions falling beneath 92.0% score for manual operator human-in-the-loop review.
+          </p>
+</div>
+<div class="mt-space-md flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-tertiary font-medium">Audit rule: Active</span>
+<a class="font-body-sm text-body-sm text-primary hover:underline font-medium" data-path="settings" href="#">Adjust</a>
+</div>
+</div>
+</section>
+</div>
+</div>
+<script>
+  // Ensure the header active state highlights 'Overview'
+  (function() {
+    const navLinks = document.querySelectorAll('header nav a[data-path]');
+    navLinks.forEach(link => {
+      if (link.getAttribute('data-path') === 'overview') {
+        link.className = 'px-space-md py-1.5 rounded-lg font-body-sm text-body-sm bg-primary-container text-on-primary font-medium shadow-sm transition-all';
+      }
+    });
+  })();
+</script></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)]"><div class="w-full px-margin py-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm"><div class="flex items-center gap-space-md"><span class="font-body-sm text-body-sm text-on-surface-variant">Vision Extractor Workstation</span><span class="h-3 w-px bg-outline-variant"></span><span class="font-code-sm text-code-sm text-on-surface-variant">v2.4.0-preview</span><span class="h-3 w-px bg-outline-variant"></span><span class="font-code-sm text-code-sm text-tertiary font-medium">Engine: OCR-Core 4.2</span></div><div class="flex items-center gap-space-lg"><span class="font-body-sm text-body-sm text-on-surface-variant">Environment: Isolated Sandbox</span><span class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Vision Extractor Labs</span></div></div></footer></body></html>

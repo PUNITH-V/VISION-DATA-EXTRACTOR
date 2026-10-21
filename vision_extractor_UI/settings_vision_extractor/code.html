@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Vision Extractor</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-tertiary":"#ffffff","primary-container":"#4f46e5","on-primary":"#ffffff","surface-container-lowest":"#ffffff","surface-container-highest":"#d3e4fe","surface-variant":"#d3e4fe","secondary-container":"#dae2fd","on-secondary-fixed-variant":"#3f465c","on-secondary-container":"#5c647a","secondary-fixed":"#dae2fd","on-error-container":"#93000a","on-secondary":"#ffffff","on-surface":"#0b1c30","outline-variant":"#c7c4d8","on-background":"#0b1c30","error-container":"#ffdad6","primary-fixed":"#e2dfff","outline":"#777587","inverse-on-surface":"#eaf1ff","on-tertiary-fixed-variant":"#005236","surface-container-low":"#eff4ff","tertiary-fixed":"#6ffbbe","tertiary":"#005338","primary-fixed-dim":"#c3c0ff","inverse-primary":"#c3c0ff","surface-tint":"#4d44e3","on-primary-fixed-variant":"#3323cc","on-secondary-fixed":"#131b2e","surface-container-high":"#dce9ff","secondary-fixed-dim":"#bec6e0","secondary":"#565e74","surface":"#f8f9ff","tertiary-container":"#006e4b","on-surface-variant":"#464555","background":"#f8f9ff","on-error":"#ffffff","on-primary-fixed":"#0f0069","surface-container":"#e5eeff","tertiary-fixed-dim":"#4edea3","on-tertiary-fixed":"#002113","on-tertiary-container":"#67f4b7","primary":"#3525cd","surface-dim":"#cbdbf5","inverse-surface":"#213145","surface-bright":"#f8f9ff","on-primary-container":"#dad7ff","error":"#ba1a1a"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"gutter-mobile":"0.75rem","space-sm":"0.5rem","margin-mobile":"1rem","space-md":"1rem","gutter":"1.5rem","space-xl":"2.5rem","space-lg":"1.5rem","margin":"2rem","space-xs":"0.25rem"},"fontFamily":{"label-md":["Inter"],"body-sm":["Inter"],"headline-lg":["Geist"],"code-sm":["JetBrains Mono"],"body-lg":["Inter"],"headline-sm":["Geist"],"headline-lg-mobile":["Geist"],"display":["Geist"],"code-md":["JetBrains Mono"],"headline-md":["Geist"],"body-md":["Inter"]},"fontSize":{"label-md":["0.75rem",{"lineHeight":"1","letterSpacing":"0.02em","fontWeight":"600"}],"body-sm":["0.75rem",{"lineHeight":"1.5","letterSpacing":"0.01em","fontWeight":"400"}],"headline-lg":["2rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"600"}],"code-sm":["0.6875rem",{"lineHeight":"1.4","letterSpacing":"0em","fontWeight":"500"}],"body-lg":["1rem",{"lineHeight":"1.6","letterSpacing":"0em","fontWeight":"400"}],"headline-sm":["1rem",{"lineHeight":"1.4","letterSpacing":"-0.005em","fontWeight":"500"}],"headline-lg-mobile":["1.5rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"600"}],"display":["3rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"600"}],"code-md":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-md":["1.25rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"500"}],"body-md":["0.875rem",{"lineHeight":"1.5","letterSpacing":"0em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[18px]">document_scanner</span></div><span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Vision Extractor</span></div><div class="hidden sm:inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-secondary-container/60"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span><span class="font-code-sm text-code-sm text-on-secondary-container font-medium">Mock Dev Mode</span></div></div><nav class="hidden xl:flex items-center gap-space-xs px-1 py-1 rounded-lg bg-surface-container-low" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg shadow-sm"><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="overview" href="#">Overview</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="extract-images" href="#">Extract Images</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="search-reports" href="#">Search Reports</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="ask-your-images" href="#">Ask Your Images</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="reports" href="#">Reports</a><a aria-current="page" class="px-space-md py-1.5 transition-all bg-primary-container text-on-primary font-medium rounded-lg shadow-sm" data-path="settings" href="#">Settings</a></nav><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-low"><span class="h-2 w-2 rounded-full bg-error"></span><span class="font-code-sm text-code-sm text-on-surface-variant">FastAPI: Disconnected (Mock)</span></div><button aria-label="Toggle theme" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" id="theme-toggle-btn" onclick="document.documentElement.classList.toggle('dark');" type="button"><span class="material-symbols-outlined text-[20px] dark:hidden">light_mode</span><span class="material-symbols-outlined text-[20px] hidden dark:inline">dark_mode</span></button><div class="relative flex items-center gap-space-sm pl-space-xs"><div class="hidden md:flex flex-col text-right"><span class="font-body-sm text-body-sm text-on-surface font-medium leading-none">Alex Chen</span><span class="font-code-sm text-code-sm text-on-surface-variant leading-none mt-1">alex.chen@example.com</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/30" src="https://lh3.googleusercontent.com/aida/AEtjO1WrygqNG8DoBkyZmVOAzPcSdGRHbjzFnHSJSvadj8SyfRiZY1mIbMpA1LMAO0odOXCSvWPwGe1djU4lfeAfm0tkdFtMy831tM7p4HJhI63iXkp6CRVSWEw_9g1zmVx0_2lq3dBwlj8cfJdPaq4a-17MGZWXmrxtx8CHcBWV4HSvWR3hRE0nhQ1DzvE35INVWoY23Q8mwRUL283aTvbXGriEN2QZIh6zXjiMT7sfaOEgsCREtGrBWbonrJ4"/><span class="material-symbols-outlined text-[16px] text-on-surface-variant hidden md:inline">expand_more</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<div class="w-full max-w-7xl mx-auto px-margin-mobile md:px-margin py-space-xl">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md mb-space-xl">
+<div class="space-y-space-xs">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded-full bg-secondary-container/50">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="font-code-sm text-code-sm text-on-secondary-container">System Calibration &amp; Security</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Workstation Configuration</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Manage identity parameters, visual perception themes, vector database linkages, and security assertions for document ingestion pipelines.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-xl bg-surface-container-high hover:bg-surface-variant text-on-surface font-body-sm text-body-sm transition-colors flex items-center gap-1.5 shadow-sm active:scale-[0.98]" id="ping-endpoint-btn">
+<span class="material-symbols-outlined text-[18px]">cell_tower</span>
+<span>Health Check</span>
+</button>
+<button class="px-space-lg py-2 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-body-sm text-body-sm transition-all shadow-sm active:scale-[0.98] flex items-center gap-1.5" id="save-all-btn">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Apply Changes</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover shadow-inner" data-alt="Close up profile photo of a senior software architect with neutral expression, soft indoor studio lighting, minimal slate indigo background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo2IccgieT0FA_SsKZNZh3B6JBBSbqeUpUAgr01miSbqAEXqbajoYlVk4TvEk-BEri2U1NXTXf8rsutOqBhd-kMjcIV9901vIMk55oA46LHfhiAv1JPHeJVE9p1IldsVgiJOnrNnXxeAfkbfqNgp1E6vbKvvrd_RhNreYrZBf5txfWVUmYG_JZmTWZsNPOnV8FuUlJRzqFLMsB27CJFhTHerr9nCvqwwqHVSVqqunsCTQ8Ul5JW08U"/>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-tertiary ring-2 ring-surface-container-lowest"></span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Alex Chen</h3>
+<span class="font-code-sm text-code-sm text-tertiary bg-surface-container-low px-space-xs py-0.5 rounded">Verified Member</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">shield_person</span>
+</div>
+<div class="space-y-space-sm pt-space-xs">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-0.5">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Authenticated Email</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium select-all">alex.chen@example.com</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Supabase Auth UID</span>
+<button class="text-secondary hover:text-primary transition-colors" id="copy-uid-btn" title="Copy UID">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+</button>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface font-mono select-all truncate" id="auth-uid">usr_8492048f-3a21-4f11-89ab</span>
+</div>
+</div>
+<div class="pt-space-xs">
+<button class="w-full py-2.5 px-space-md rounded-xl bg-error-container/60 hover:bg-error-container text-on-error-container font-body-sm text-body-sm font-medium transition-colors flex items-center justify-center gap-space-xs shadow-sm active:scale-[0.99]" id="signout-btn">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+<span>Terminate Session</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">palette</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Visual Workspace</h2>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Auto-synced</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Color dynamics adjust screen luminance for high-contrast optical OCR and dense matrix inspection.
+          </p>
+<div class="grid grid-cols-1 gap-space-xs" id="theme-selector-group">
+<label class="relative flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors has-[:checked]:bg-primary-container has-[:checked]:text-on-primary group">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-on-surface group-has-[:checked]:text-on-primary">light_mode</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-medium text-on-surface group-has-[:checked]:text-on-primary">Light Canvas</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant group-has-[:checked]:text-on-primary-container">Default for high-contrast inspection</span>
+</div>
+</div>
+<input checked="" class="w-4 h-4 text-primary focus:ring-0 cursor-pointer" name="theme-mode" type="radio" value="light"/>
+</label>
+<label class="relative flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors has-[:checked]:bg-primary-container has-[:checked]:text-on-primary group">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-on-surface group-has-[:checked]:text-on-primary">dark_mode</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-medium text-on-surface group-has-[:checked]:text-on-primary">Dark Room</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant group-has-[:checked]:text-on-primary-container">Low glare for dim laboratory environments</span>
+</div>
+</div>
+<input class="w-4 h-4 text-primary focus:ring-0 cursor-pointer" name="theme-mode" type="radio" value="dark"/>
+</label>
+<label class="relative flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors has-[:checked]:bg-primary-container has-[:checked]:text-on-primary group">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-on-surface group-has-[:checked]:text-on-primary">devices</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-medium text-on-surface group-has-[:checked]:text-on-primary">System Match</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant group-has-[:checked]:text-on-primary-container">Follow OS color configuration</span>
+</div>
+</div>
+<input class="w-4 h-4 text-primary focus:ring-0 cursor-pointer" name="theme-mode" type="radio" value="system"/>
+</label>
+</div>
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-secondary-container/40">
+<span class="material-symbols-outlined text-[16px] text-on-secondary-container">cloud_sync</span>
+<span class="font-code-sm text-code-sm text-on-secondary-container">Synced with localStorage &amp; remote user profile</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-space-xs gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Backend Ingestion Cluster</h2>
+<span class="font-code-sm text-code-sm text-on-surface-variant">FastAPI Microservice Engine Architecture</span>
+</div>
+</div>
+<div class="inline-flex items-center gap-2 px-space-sm py-1 rounded-full bg-error-container/40 text-on-error-container">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="font-code-sm text-code-sm font-medium">Pending Launch (Mock Active)</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-sm">
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Endpoint URL</span>
+<span class="font-code-sm text-code-sm text-primary font-medium">NEXT_PUBLIC_API</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<input class="w-full bg-surface-container-lowest px-space-sm py-1.5 rounded-lg font-code-sm text-code-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container transition-all" id="api-url-input" type="text" value="http://localhost:8000"/>
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-variant font-body-sm text-body-sm text-on-surface transition-colors flex items-center" id="test-endpoint-btn">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+</button>
+</div>
+</div>
+<p class="font-code-sm text-code-sm text-on-surface-variant">Dispatches multipart document buffers for boundary-box matrix analysis.</p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-sm">
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Vector Store</span>
+<span class="px-1.5 py-0.5 rounded bg-tertiary-container/20 text-tertiary-container font-code-sm text-code-sm font-semibold">Mounted</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold flex items-center gap-1.5">
+<span>ChromaDB</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-normal">(Local / Container)</span>
+</div>
+</div>
+<p class="font-code-sm text-code-sm text-on-surface-variant">Persistent disk persistence mounted at <code class="font-code-sm text-on-surface bg-surface-container px-1 rounded">/var/lib/chroma</code></p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-sm">
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Embedding Model</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Dense Float32</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface font-medium truncate" title="sentence-transformers/all-MiniLM-L6-v2">
+                  sentence-transformers/all-MiniLM-L6-v2
+                </div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="px-2 py-0.5 rounded-md bg-secondary-container/70 text-on-secondary-container font-code-sm text-code-sm">384 Dimensions</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">Cosine Distance</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-sm">
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Bearer Auth Flow</span>
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface font-medium">
+                  Supabase Access Token Propagation
+                </div>
+</div>
+<p class="font-code-sm text-code-sm text-on-surface-variant">Transfers JWT headers on each streaming proxy request for verified tenancy.</p>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">terminal</span>
+<span class="font-code-sm text-code-sm text-on-surface">Uvicorn Command: <span class="text-on-surface-variant font-mono">uvicorn main:app --host 0.0.0.0 --port 8000 --reload</span></span>
+</div>
+<button class="font-code-sm text-code-sm text-primary hover:underline" id="copy-uvicorn-btn">Copy</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]">encrypted</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Environment &amp; Security Fabric</h2>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Row-Level Isolation &amp; Cryptographic Proofs</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container/20 text-tertiary-container font-code-sm text-code-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Encrypted</span>
+</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-1">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Supabase Project</span>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Vision Extractor</div>
+<div class="flex items-center gap-1.5 mt-1 text-tertiary font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Active Connection</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-1">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Row Level Security</span>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">RLS Enforced</div>
+<div class="flex items-center gap-1.5 mt-1 text-tertiary font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[14px]">security</span>
+<span>100% User Tables</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-1">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Data Tier</span>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">PostgreSQL 15.1</div>
+<div class="flex items-center gap-1.5 mt-1 text-on-surface-variant font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[14px]">dns</span>
+<span>pgvector Enabled</span>
+</div>
+</div>
+</div>
+<div class="rounded-xl bg-surface-container-low p-space-md space-y-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Security Policy Guarantees</span>
+<ul class="grid grid-cols-1 md:grid-cols-2 gap-space-xs font-body-sm text-body-sm text-on-surface">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary">task_alt</span>
+<span>User document blobs partitioned by <code class="font-code-sm text-code-sm text-primary">auth.uid()</code></span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary">task_alt</span>
+<span>Vector search queries restricted by session tenancy</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary">task_alt</span>
+<span>Zero telemetry shared across third-party models</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary">task_alt</span>
+<span>Ephemeral token revocation on session destruction</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed bottom-space-lg right-space-lg z-50 transform translate-y-12 opacity-0 pointer-events-none transition-all duration-300 ease-out flex items-center gap-space-sm bg-inverse-surface text-inverse-on-surface px-space-md py-space-sm rounded-xl shadow-xl" id="toast">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed-dim" id="toast-icon">check_circle</span>
+<span class="font-body-sm text-body-sm font-medium" id="toast-msg">Settings synced successfully.</span>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // Toast Notification Utility
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-msg');
+    const toastIcon = document.getElementById('toast-icon');
+    let toastTimeout;
+
+    function showNotification(msg, icon = 'check_circle') {
+      if (!toast) return;
+      toastMsg.textContent = msg;
+      toastIcon.textContent = icon;
+      toast.classList.remove('translate-y-12', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('translate-y-12', 'opacity-0', 'pointer-events-none');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3200);
+    }
+
+    // Copy UID
+    const copyUidBtn = document.getElementById('copy-uid-btn');
+    if (copyUidBtn) {
+      copyUidBtn.addEventListener('click', () => {
+        const uidText = document.getElementById('auth-uid').innerText;
+        navigator.clipboard.writeText(uidText).then(() => {
+          showNotification('UID copied to clipboard');
+        });
+      });
+    }
+
+    // Copy Uvicorn
+    const copyUvicornBtn = document.getElementById('copy-uvicorn-btn');
+    if (copyUvicornBtn) {
+      copyUvicornBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('uvicorn main:app --host 0.0.0.0 --port 8000 --reload').then(() => {
+          showNotification('Launch command copied to clipboard');
+        });
+      });
+    }
+
+    // Appearance Radio Selector handling
+    const themeRadios = document.querySelectorAll('input[name="theme-mode"]');
+    const savedTheme = localStorage.getItem('vision_extractor_theme') || 'light';
+    
+    themeRadios.forEach(radio => {
+      if (radio.value === savedTheme) {
+        radio.checked = true;
+      }
+      radio.addEventListener('change', (e) => {
+        const val = e.target.value;
+        localStorage.setItem('vision_extractor_theme', val);
+        
+        if (val === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else if (val === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          // System Preference Check
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        }
+        showNotification('Workspace appearance set to ' + val);
+      });
+    });
+
+    // Sign Out Trigger
+    const signoutBtn = document.getElementById('signout-btn');
+    if (signoutBtn) {
+      signoutBtn.addEventListener('click', () => {
+        signoutBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span><span>Revoking Credentials...</span>';
+        setTimeout(() => {
+          showNotification('Session terminated. Redirecting to auth...', 'logout');
+          setTimeout(() => {
+            signoutBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">logout</span><span>Terminate Session</span>';
+          }, 1500);
+        }, 800);
+      });
+    }
+
+    // Health Check Trigger
+    const healthCheckBtn = document.getElementById('ping-endpoint-btn');
+    const testEndpointBtn = document.getElementById('test-endpoint-btn');
+    
+    function triggerCheck() {
+      showNotification('Pinging FastAPI server at http://localhost:8000 ...', 'cell_tower');
+      setTimeout(() => {
+        showNotification('Cluster offline: Mock Sandbox fallback active', 'warning');
+      }, 1200);
+    }
+
+    if (healthCheckBtn) healthCheckBtn.addEventListener('click', triggerCheck);
+    if (testEndpointBtn) testEndpointBtn.addEventListener('click', triggerCheck);
+
+    // Save All Button
+    const saveBtn = document.getElementById('save-all-btn');
+    if (saveBtn) {
+      saveBtn.addEventListener('click', () => {
+        saveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Applying...</span>';
+        setTimeout(() => {
+          saveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">verified</span><span>Apply Changes</span>';
+          showNotification('All settings saved to Supabase profile');
+        }, 600);
+      });
+    }
+
+  })();
+</script></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)]"><div class="w-full px-margin py-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm"><div class="flex items-center gap-space-md"><span class="font-body-sm text-body-sm text-on-surface-variant">Vision Extractor Workstation</span><span class="h-3 w-px bg-outline-variant"></span><span class="font-code-sm text-code-sm text-on-surface-variant">v2.4.0-preview</span><span class="h-3 w-px bg-outline-variant"></span><span class="font-code-sm text-code-sm text-tertiary font-medium">Engine: OCR-Core 4.2</span></div><div class="flex items-center gap-space-lg"><span class="font-body-sm text-body-sm text-on-surface-variant">Environment: Isolated Sandbox</span><span class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Vision Extractor Labs</span></div></div></footer></body></html>

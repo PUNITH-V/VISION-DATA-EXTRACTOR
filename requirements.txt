@@ -1,0 +1,31 @@
+# Vision Data Extractor — pinned dependencies
+# Install with: pip install -r requirements.txt
+# (Use the project venv: venv\Scripts\pip.exe on Windows)
+
+# ── Core AI pipeline ─────────────────────────────────────────────────────────
+openai==3.28.0
+sentence-transformers==6.1.0
+chromadb==1.5.9
+pillow==12.3.0
+pydantic==2.14.0
+
+# ── FastAPI / API server ─────────────────────────────────────────────────────
+fastapi==0.115.12
+uvicorn==0.54.0
+starlette==0.46.2
+python-multipart==0.0.20
+
+# ── Configuration ────────────────────────────────────────────────────────────
+python-dotenv==1.2.4
+
+# ── HTTP client (TestClient + httpx) ────────────────────────────────────────
+httpx==0.28.1
+anyio==4.15.1
+
+# ── Testing ──────────────────────────────────────────────────────────────────
+pytest==8.4.2
+pytest-asyncio==0.26.0
+
+# ── Stage 3 — JWT verification ───────────────────────────────────────────────
+python-jose[cryptography]==3.3.0
+cryptography==50.0.2

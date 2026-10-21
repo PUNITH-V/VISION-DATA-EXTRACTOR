@@ -1,0 +1,106 @@
+# ==============================
+# Secrets and environment files
+# ==============================
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+
+# ==============================
+# Python
+# ==============================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.python-version
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Packaging and build output
+build/
+dist/
+*.egg-info/
+.eggs/
+wheels/
+pip-wheel-metadata/
+
+# Test and coverage artifacts
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+test-results/
+
+# Type checking and linting caches
+.mypy_cache/
+.pyright/
+.ruff_cache/
+
+# ==============================
+# Logs and temporary files
+# ==============================
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# ==============================
+# ChromaDB and vector data
+# ==============================
+chroma_data/
+chroma_db/
+chroma.sqlite3
+**/chroma.sqlite3
+
+# ==============================
+# Generated extraction reports
+# ==============================
+output/
+**/output/
+
+# Keep intentional output documentation/examples
+!output/.gitkeep
+!output/README.md
+
+# ==============================
+# Frontend dependencies/build output
+# ==============================
+node_modules/
+.npm/
+.parcel-cache/
+.vite/
+.next/
+out/
+
+# Environment files used by frontend tooling
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ==============================
+# Editors and operating systems
+# ==============================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop
