@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 
 <html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_blank" name="shell-type"/><title>Vision Extractor</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-tertiary":"#ffffff","primary-container":"#4f46e5","on-primary":"#ffffff","surface-container-lowest":"#ffffff","surface-container-highest":"#d3e4fe","surface-variant":"#d3e4fe","secondary-container":"#dae2fd","on-secondary-fixed-variant":"#3f465c","on-secondary-container":"#5c647a","secondary-fixed":"#dae2fd","on-error-container":"#93000a","on-secondary":"#ffffff","on-surface":"#0b1c30","outline-variant":"#c7c4d8","on-background":"#0b1c30","error-container":"#ffdad6","primary-fixed":"#e2dfff","outline":"#777587","inverse-on-surface":"#eaf1ff","on-tertiary-fixed-variant":"#005236","surface-container-low":"#eff4ff","tertiary-fixed":"#6ffbbe","tertiary":"#005338","primary-fixed-dim":"#c3c0ff","inverse-primary":"#c3c0ff","surface-tint":"#4d44e3","on-primary-fixed-variant":"#3323cc","on-secondary-fixed":"#131b2e","surface-container-high":"#dce9ff","secondary-fixed-dim":"#bec6e0","secondary":"#565e74","surface":"#f8f9ff","tertiary-container":"#006e4b","on-surface-variant":"#464555","background":"#f8f9ff","on-error":"#ffffff","on-primary-fixed":"#0f0069","surface-container":"#e5eeff","tertiary-fixed-dim":"#4edea3","on-tertiary-fixed":"#002113","on-tertiary-container":"#67f4b7","primary":"#3525cd","surface-dim":"#cbdbf5","inverse-surface":"#213145","surface-bright":"#f8f9ff","on-primary-container":"#dad7ff","error":"#ba1a1a"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"gutter-mobile":"0.75rem","space-sm":"0.5rem","margin-mobile":"1rem","space-md":"1rem","gutter":"1.5rem","space-xl":"2.5rem","space-lg":"1.5rem","margin":"2rem","space-xs":"0.25rem"},"fontFamily":{"label-md":["Inter"],"body-sm":["Inter"],"headline-lg":["Geist"],"code-sm":["JetBrains Mono"],"body-lg":["Inter"],"headline-sm":["Geist"],"headline-lg-mobile":["Geist"],"display":["Geist"],"code-md":["JetBrains Mono"],"headline-md":["Geist"],"body-md":["Inter"]},"fontSize":{"label-md":["0.75rem",{"lineHeight":"1","letterSpacing":"0.02em","fontWeight":"600"}],"body-sm":["0.75rem",{"lineHeight":"1.5","letterSpacing":"0.01em","fontWeight":"400"}],"headline-lg":["2rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"600"}],"code-sm":["0.6875rem",{"lineHeight":"1.4","letterSpacing":"0em","fontWeight":"500"}],"body-lg":["1rem",{"lineHeight":"1.6","letterSpacing":"0em","fontWeight":"400"}],"headline-sm":["1rem",{"lineHeight":"1.4","letterSpacing":"-0.005em","fontWeight":"500"}],"headline-lg-mobile":["1.5rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"600"}],"display":["3rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"600"}],"code-md":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-md":["1.25rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"500"}],"body-md":["0.875rem",{"lineHeight":"1.5","letterSpacing":"0em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex items-center justify-center p-gutter"><main class="w-full max-w-lg bg-surface"><div class="flex flex-col w-full relative">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="../shared/theme.js"></script><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-tertiary":"#ffffff","primary-container":"#4f46e5","on-primary":"#ffffff","surface-container-lowest":"#ffffff","surface-container-highest":"#d3e4fe","surface-variant":"#d3e4fe","secondary-container":"#dae2fd","on-secondary-fixed-variant":"#3f465c","on-secondary-container":"#5c647a","secondary-fixed":"#dae2fd","on-error-container":"#93000a","on-secondary":"#ffffff","on-surface":"#0b1c30","outline-variant":"#c7c4d8","on-background":"#0b1c30","error-container":"#ffdad6","primary-fixed":"#e2dfff","outline":"#777587","inverse-on-surface":"#eaf1ff","on-tertiary-fixed-variant":"#005236","surface-container-low":"#eff4ff","tertiary-fixed":"#6ffbbe","tertiary":"#005338","primary-fixed-dim":"#c3c0ff","inverse-primary":"#c3c0ff","surface-tint":"#4d44e3","on-primary-fixed-variant":"#3323cc","on-secondary-fixed":"#131b2e","surface-container-high":"#dce9ff","secondary-fixed-dim":"#bec6e0","secondary":"#565e74","surface":"#f8f9ff","tertiary-container":"#006e4b","on-surface-variant":"#464555","background":"#f8f9ff","on-error":"#ffffff","on-primary-fixed":"#0f0069","surface-container":"#e5eeff","tertiary-fixed-dim":"#4edea3","on-tertiary-fixed":"#002113","on-tertiary-container":"#67f4b7","primary":"#3525cd","surface-dim":"#cbdbf5","inverse-surface":"#213145","surface-bright":"#f8f9ff","on-primary-container":"#dad7ff","error":"#ba1a1a"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"gutter-mobile":"0.75rem","space-sm":"0.5rem","margin-mobile":"1rem","space-md":"1rem","gutter":"1.5rem","space-xl":"2.5rem","space-lg":"1.5rem","margin":"2rem","space-xs":"0.25rem"},"fontFamily":{"label-md":["Inter"],"body-sm":["Inter"],"headline-lg":["Geist"],"code-sm":["JetBrains Mono"],"body-lg":["Inter"],"headline-sm":["Geist"],"headline-lg-mobile":["Geist"],"display":["Geist"],"code-md":["JetBrains Mono"],"headline-md":["Geist"],"body-md":["Inter"]},"fontSize":{"label-md":["0.75rem",{"lineHeight":"1","letterSpacing":"0.02em","fontWeight":"600"}],"body-sm":["0.75rem",{"lineHeight":"1.5","letterSpacing":"0.01em","fontWeight":"400"}],"headline-lg":["2rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"600"}],"code-sm":["0.6875rem",{"lineHeight":"1.4","letterSpacing":"0em","fontWeight":"500"}],"body-lg":["1rem",{"lineHeight":"1.6","letterSpacing":"0em","fontWeight":"400"}],"headline-sm":["1rem",{"lineHeight":"1.4","letterSpacing":"-0.005em","fontWeight":"500"}],"headline-lg-mobile":["1.5rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"600"}],"display":["3rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"600"}],"code-md":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-md":["1.25rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"500"}],"body-md":["0.875rem",{"lineHeight":"1.5","letterSpacing":"0em","fontWeight":"400"}]}}}};</script>
+<!-- Supabase JS CDN — pinned to 2.49.4 UMD build -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.min.js"></script>
+<!-- Public config (fill in your values before running) -->
+<script src="../shared/config.js"></script>
+<!-- Supabase client singleton -->
+<script src="../shared/supabase-client.js"></script>
+</head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex items-center justify-center p-gutter"><main class="w-full max-w-lg bg-surface"><div class="flex flex-col w-full relative">
 <div class="pointer-events-none absolute -top-24 -left-20 w-80 h-80 rounded-full bg-primary-fixed blur-3xl opacity-35 mix-blend-multiply"></div>
 <div class="pointer-events-none absolute top-40 -right-24 w-72 h-72 rounded-full bg-secondary-fixed blur-3xl opacity-45 mix-blend-multiply"></div>
 <!-- Main Authenticator Card -->
 <div class="relative w-full bg-surface-container-lowest shadow-xl rounded-xl overflow-hidden backdrop-blur-md">
 <!-- Top Visual Watermark & Decorative Scan Pattern -->
 <div class="relative h-28 bg-surface-container-low overflow-hidden flex items-center justify-between px-space-lg">
-<!-- Optical coordinate grid svg watermark -->
 <svg class="absolute inset-0 w-full h-full text-outline-variant opacity-25" fill="none" viewbox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <pattern height="20" id="opt-grid" patternunits="userSpaceOnUse" width="20">
@@ -17,14 +23,12 @@
 </pattern>
 </defs>
 <rect fill="url(#opt-grid)" height="100%" width="100%"></rect>
-<!-- Analytical bounding boxes watermark -->
 <rect height="38" rx="2" stroke="currentColor" stroke-dasharray="3 3" stroke-width="1.2" width="76" x="220" y="24"></rect>
 <rect height="68" rx="2" stroke="currentColor" stroke-width="1.2" width="64" x="306" y="16"></rect>
 <line opacity="0.5" stroke="currentColor" stroke-width="0.8" x1="220" x2="296" y1="44" y2="44"></line>
 <circle cx="306" cy="16" fill="#4f46e5" r="3"></circle>
 <circle cx="370" cy="84" fill="#4f46e5" r="3"></circle>
 </svg>
-<!-- Live optical inspection badge watermark -->
 <div class="relative z-10 flex items-center gap-space-sm bg-surface-container-lowest shadow-sm rounded-DEFAULT px-space-sm py-space-xs text-on-surface">
 <span class="inline-block w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
 <span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant">ENGINE V4.2 ACTIVE</span>
@@ -36,7 +40,6 @@
 </div>
 <!-- Content Area -->
 <div class="px-space-lg pt-space-lg pb-space-xl">
-<!-- Brand & Header Block -->
 <div class="flex flex-col items-center text-center -mt-12 mb-space-lg">
 <div class="w-14 h-14 rounded-xl bg-surface-container-lowest p-2 shadow-md flex items-center justify-center ring-4 ring-surface-container-low mb-space-sm">
 <img alt="Vision Extractor Mark" class="w-10 h-10 object-contain rounded-DEFAULT" src="https://lh3.googleusercontent.com/aida/AEtjO1WrygqNG8DoBkyZmVOAzPcSdGRHbjzFnHSJSvadj8SyfRiZY1mIbMpA1LMAO0odOXCSvWPwGe1djU4lfeAfm0tkdFtMy831tM7p4HJhI63iXkp6CRVSWEw_9g1zmVx0_2lq3dBwlj8cfJdPaq4a-17MGZWXmrxtx8CHcBWV4HSvWR3hRE0nhQ1DzvE35INVWoY23Q8mwRUL283aTvbXGriEN2QZIh6zXjiMT7sfaOEgsCREtGrBWbonrJ4"/>
@@ -52,7 +55,7 @@
           Sign in to access your reports, semantic image search, and multimodal RAG knowledge base.
         </p>
 </div>
-<!-- Graceful Supabase Auth Message Alert Container -->
+<!-- Alert Container -->
 <div class="hidden mb-space-md bg-error-container text-on-error-container p-space-sm rounded-DEFAULT flex items-start gap-space-sm" id="authAlert">
 <span class="material-symbols-outlined text-error mt-0.5 text-base">error</span>
 <div class="flex-1">
@@ -65,12 +68,9 @@
 </div>
 <!-- Authentication Form -->
 <form class="space-y-space-md" id="authForm" onsubmit="handleAuthSubmit(event)">
-<!-- Email Input Field -->
 <div>
 <div class="flex items-center justify-between mb-1">
-<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" for="email">
-              Email Address
-            </label>
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" for="email">Email Address</label>
 <span class="font-code-sm text-code-sm text-outline hidden" id="emailStatus">Valid format</span>
 </div>
 <div class="relative flex items-center">
@@ -78,12 +78,9 @@
 <input class="w-full bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md pl-10 pr-4 py-2.5 rounded-DEFAULT focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container transition-all" id="email" name="email" oninput="validateEmailField(this)" placeholder="operator@precision-vision.io" required="" type="email"/>
 </div>
 </div>
-<!-- Password Input Field -->
 <div>
 <div class="flex items-center justify-between mb-1">
-<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" for="password">
-              Password
-            </label>
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" for="password">Password</label>
 <span class="font-code-sm text-code-sm text-outline">Entropy: Secure</span>
 </div>
 <div class="relative flex items-center">
@@ -94,17 +91,15 @@
 </button>
 </div>
 </div>
-<!-- Session Checkbox & Forgot Link -->
 <div class="flex items-center justify-between pt-1">
 <label class="flex items-center gap-space-xs cursor-pointer select-none">
 <input checked="" class="w-4 h-4 rounded-DEFAULT bg-surface-container-low text-primary-container accent-primary-container focus:ring-0 cursor-pointer" id="remember" name="remember" type="checkbox"/>
 <span class="font-body-sm text-body-sm text-on-surface-variant">Remember session</span>
 </label>
-<a class="font-body-sm text-body-sm text-primary hover:underline transition-colors font-medium" href="#recovery" onclick="simulateRecovery(event)">
+<a class="font-body-sm text-body-sm text-primary hover:underline transition-colors font-medium" href="#recovery" onclick="handleForgotPassword(event)">
             Forgot password?
           </a>
 </div>
-<!-- Primary Submit CTA with Supabase Indicator -->
 <button class="w-full mt-space-sm bg-primary-container hover:bg-primary text-on-primary py-3 px-space-md rounded-DEFAULT font-label-md text-label-md flex items-center justify-center gap-space-sm shadow-md transition-all active:scale-[0.99] group" id="submitBtn" type="submit">
 <span class="material-symbols-outlined text-base" id="btnIcon">bolt</span>
 <span id="btnText">Sign In with Supabase</span>
@@ -114,15 +109,14 @@
 </svg>
 </button>
 </form>
-<!-- Toggle / Switch Auth Mode -->
 <div class="mt-space-lg pt-space-md bg-surface-container-low -mx-space-lg px-space-lg flex items-center justify-between">
-<span class="font-body-sm text-body-sm text-on-surface-variant">Don't have an account?</span>
-<a class="font-label-md text-label-md text-primary font-semibold hover:underline" href="#signup" onclick="toggleAuthMode(event)">
-          Create Access Token
+<span class="font-body-sm text-body-sm text-on-surface-variant" id="toggle-text">Don't have an account?</span>
+<a class="font-label-md text-label-md text-primary font-semibold hover:underline" href="#signup" onclick="toggleAuthMode(event)" id="toggle-link">
+          Sign Up
         </a>
 </div>
 </div>
-<!-- Security & Protocol Footer -->
+<!-- Security Footer -->
 <div class="bg-surface-container py-3 px-space-md flex flex-wrap items-center justify-between gap-space-xs text-on-surface-variant font-code-sm text-code-sm">
 <div class="flex items-center gap-1.5">
 <span class="material-symbols-outlined text-sm text-tertiary">verified_user</span>
@@ -144,87 +138,253 @@
 <span>Multimodal Graph Synced</span>
 </div>
 </div>
+<!-- Toast notification -->
+<div class="fixed bottom-6 right-6 z-[100] transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 ease-out flex items-center gap-space-sm bg-inverse-surface text-inverse-on-surface px-space-md py-space-sm rounded-xl shadow-xl" id="toast">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed-dim">check_circle</span>
+<span class="font-body-sm text-body-sm font-medium" id="toast-message">Done</span>
+</div>
+</main>
+
 <script>
-  function togglePasswordVisibility() {
-    const pwdInput = document.getElementById('password');
-    const eyeIcon = document.getElementById('passwordEyeIcon');
-    if (!pwdInput || !eyeIcon) return;
-    
-    if (pwdInput.type === 'password') {
-      pwdInput.type = 'text';
-      eyeIcon.textContent = 'visibility_off';
-    } else {
-      pwdInput.type = 'password';
-      eyeIcon.textContent = 'visibility';
-    }
+"use strict";
+
+/* ── UI helpers ─────────────────────────────────────────────────────────── */
+
+function togglePasswordVisibility() {
+  var pwdInput = document.getElementById("password");
+  var eyeIcon  = document.getElementById("passwordEyeIcon");
+  if (!pwdInput || !eyeIcon) return;
+  if (pwdInput.type === "password") {
+    pwdInput.type = "text";
+    eyeIcon.textContent = "visibility_off";
+  } else {
+    pwdInput.type = "password";
+    eyeIcon.textContent = "visibility";
+  }
+}
+
+function validateEmailField(input) {
+  var status = document.getElementById("emailStatus");
+  if (!status) return;
+  var isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
+  if (isValid) {
+    status.classList.remove("hidden");
+    status.textContent = "Valid syntax";
+  } else {
+    status.classList.add("hidden");
+  }
+}
+
+function dismissAlert() {
+  var alertBox = document.getElementById("authAlert");
+  if (alertBox) alertBox.classList.add("hidden");
+}
+
+function showAlert(msg) {
+  var alertBox = document.getElementById("authAlert");
+  var alertMsg = document.getElementById("alertMessage");
+  if (alertBox && alertMsg) {
+    alertMsg.textContent = msg;
+    alertBox.classList.remove("hidden");
+  }
+}
+
+function setButtonLoading(loading) {
+  var btn     = document.getElementById("submitBtn");
+  var text    = document.getElementById("btnText");
+  var icon    = document.getElementById("btnIcon");
+  var spinner = document.getElementById("btnSpinner");
+  if (!btn) return;
+  btn.disabled = loading;
+  btn.classList.toggle("opacity-90", loading);
+  if (icon)    icon.classList.toggle("hidden", loading);
+  if (spinner) spinner.classList.toggle("hidden", !loading);
+  if (text)    text.textContent = loading ? (isSignUpMode ? "Creating account…" : "Verifying…") : (isSignUpMode ? "Sign Up with Supabase" : "Sign In with Supabase");
+}
+
+/* ── Configuration check ─────────────────────────────────────────────────── */
+
+function isSupabaseReady() {
+  return !!(window.veSupabase);
+}
+
+/* ── Auth mode toggle (Sign In / Sign Up) ────────────────────────────────── */
+
+var isSignUpMode = false;
+
+function toggleAuthMode(e) {
+  e.preventDefault();
+  isSignUpMode = !isSignUpMode;
+
+  var btnText   = document.getElementById("btnText");
+  var btnIcon   = document.getElementById("btnIcon");
+  var toggleText = document.getElementById("toggle-text");
+  var toggleLink = document.getElementById("toggle-link");
+  var heading    = document.querySelector("h1.font-headline-sm");
+
+  if (isSignUpMode) {
+    if (btnText) btnText.textContent = "Sign Up with Supabase";
+    if (btnIcon) btnIcon.textContent = "person_add";
+    if (toggleText) toggleText.textContent = "Already have an account?";
+    if (toggleLink) toggleLink.textContent = "Sign In";
+    if (heading) heading.textContent = "Create a new account to get started.";
+  } else {
+    if (btnText) btnText.textContent = "Sign In with Supabase";
+    if (btnIcon) btnIcon.textContent = "bolt";
+    if (toggleText) toggleText.textContent = "Don't have an account?";
+    if (toggleLink) toggleLink.textContent = "Sign Up";
+    if (heading) heading.textContent = "Extract structured intelligence from visual data.";
+  }
+  dismissAlert();
+}
+
+/* ── Real Supabase sign-in / sign-up ─────────────────────────────────────── */
+
+async function handleAuthSubmit(e) {
+  e.preventDefault();
+  dismissAlert();
+
+  if (!isSupabaseReady()) {
+    showAlert(
+      "Supabase is not configured. " +
+      "Open shared/config.js and fill in SUPABASE_URL and SUPABASE_ANON_KEY, " +
+      "then reload this page."
+    );
+    return;
   }
 
-  function validateEmailField(input) {
-    const status = document.getElementById('emailStatus');
-    if (!status) return;
-    const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
-    if (isValid) {
-      status.classList.remove('hidden');
-      status.textContent = 'Valid syntax';
-    } else {
-      status.classList.add('hidden');
-    }
+  var email    = (document.getElementById("email").value    || "").trim();
+  var password = (document.getElementById("password").value || "");
+
+  if (!email || !password) {
+    showAlert("Email and password are required.");
+    return;
   }
 
-  function dismissAlert() {
-    const alertBox = document.getElementById('authAlert');
-    if (alertBox) alertBox.classList.add('hidden');
+  if (password.length < 6) {
+    showAlert("Password must be at least 6 characters.");
+    return;
   }
 
-  function showAlert(msg) {
-    const alertBox = document.getElementById('authAlert');
-    const alertMsg = document.getElementById('alertMessage');
-    if (alertBox && alertMsg) {
-      alertMsg.textContent = msg;
-      alertBox.classList.remove('hidden');
-    }
-  }
+  setButtonLoading(true);
 
-  function handleAuthSubmit(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    const btnText = document.getElementById('btnText');
-    const btnIcon = document.getElementById('btnIcon');
-    const btnSpinner = document.getElementById('btnSpinner');
-    const email = document.getElementById('email').value;
+  try {
+    if (isSignUpMode) {
+      // ── Sign Up ──────────────────────────────────────────────────────────
+      var signUpResult = await window.veSupabase.auth.signUp({ email: email, password: password });
 
-    dismissAlert();
-
-    // Visual feedback state
-    btn.disabled = true;
-    btn.classList.add('opacity-90');
-    btnIcon.classList.add('hidden');
-    btnSpinner.classList.remove('hidden');
-    btnText.textContent = 'Verifying with Supabase...';
-
-    // Simulate Supabase authentication exchange
-    setTimeout(() => {
-      btn.disabled = false;
-      btn.classList.remove('opacity-90');
-      btnIcon.classList.remove('hidden');
-      btnSpinner.classList.add('hidden');
-      btnText.textContent = 'Sign In with Supabase';
-
-      if (email.includes('test') || email.includes('demo')) {
-        showAlert('Email verification required. Check inbox for magical session link.');
-      } else {
-        showAlert('Session initialized. Handshaking with Visual RAG Knowledge base...');
+      if (signUpResult.error) {
+        showAlert(signUpResult.error.message || "Sign-up failed.");
+        setButtonLoading(false);
+        return;
       }
-    }, 1100);
+
+      // Check if email confirmation is required
+      if (signUpResult.data.user && !signUpResult.data.session) {
+        // Email confirmation is enabled — user must verify before logging in
+        showAlert(
+          "Account created. Check your email for a confirmation link to activate your account, " +
+          "then return here to sign in."
+        );
+        // Switch back to sign-in mode
+        isSignUpMode = false;
+        toggleAuthMode(e); // toggle back to sign-in
+        setButtonLoading(false);
+        return;
+      }
+
+      // If we got a session back, email confirmation is disabled — auto-login
+      if (signUpResult.data.session) {
+        window.location.href = "../overview_vision_extractor/code.html";
+        return;
+      }
+
+      // Fallback: no session and no error — assume email confirmation needed
+      showAlert(
+        "Account created. If email confirmation is enabled, check your inbox. " +
+        "Otherwise, try signing in."
+      );
+      isSignUpMode = false;
+      toggleAuthMode(e);
+      setButtonLoading(false);
+
+    } else {
+      // ── Sign In ──────────────────────────────────────────────────────────
+      var signInResult = await window.veSupabase.auth.signInWithPassword({ email: email, password: password });
+
+      if (signInResult.error) {
+        showAlert(signInResult.error.message || "Sign-in failed. Check your credentials.");
+        setButtonLoading(false);
+        return;
+      }
+
+      // Real session obtained — navigate to the overview page.
+      window.location.href = "../overview_vision_extractor/code.html";
+    }
+
+  } catch (unexpectedErr) {
+    console.error("[VE] Unexpected auth error:", unexpectedErr);
+    showAlert("An unexpected error occurred. Please try again.");
+    setButtonLoading(false);
+  }
+}
+
+/* ── Password recovery ───────────────────────────────────────────────────── */
+
+async function handleForgotPassword(e) {
+  e.preventDefault();
+  dismissAlert();
+
+  if (!isSupabaseReady()) {
+    showAlert("Supabase is not configured. Cannot send recovery email.");
+    return;
   }
 
-  function simulateRecovery(e) {
-    e.preventDefault();
-    showAlert('Password recovery requested: An encrypted recovery link was dispatched to the specified address.');
+  var email = (document.getElementById("email").value || "").trim();
+  if (!email) {
+    showAlert("Enter your email address above, then click Forgot password.");
+    return;
   }
 
-  function toggleAuthMode(e) {
-    e.preventDefault();
-    showAlert('Supabase organization invitation required to generate new multi-tenant tokens.');
+  // redirectTo must match a URL in your Supabase project's allowed redirect list.
+  // Supabase always sends the email if the address is valid in the project —
+  // we do not confirm whether an account exists (avoids user enumeration).
+  var redirectURL =
+    window.location.origin + "/../sign_in_vision_extractor/code.html";
+
+  try {
+    var result = await window.veSupabase.auth.resetPasswordForEmail(email, {
+      redirectTo: redirectURL,
+    });
+
+    if (result.error) {
+      showAlert("Could not send recovery email: " + result.error.message);
+      return;
+    }
+
+    showAlert(
+      "If an account exists for that address, a recovery link has been sent. " +
+      "Check your inbox."
+    );
+  } catch (err) {
+    console.error("[VE] Password recovery error:", err);
+    showAlert("Recovery request failed. Please try again.");
   }
-</script></main></body></html>
+}
+
+/* ── If already signed in, skip to overview ─────────────────────────────── */
+
+(async function checkExistingSession() {
+  initNav(); // wire any nav links present
+  if (!isSupabaseReady()) return;
+  try {
+    var result = await window.veSupabase.auth.getSession();
+    if (result.data && result.data.session) {
+      window.location.href = "../overview_vision_extractor/code.html";
+    }
+  } catch (_) {
+    // Ignore — stay on sign-in page
+  }
+})();
+</script>
+</body></html>

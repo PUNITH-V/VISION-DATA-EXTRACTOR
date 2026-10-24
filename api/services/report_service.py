@@ -42,6 +42,29 @@ _FILENAME_KEY = "_image_filename"
 _INDEX_FLAG_KEY = "_indexed"
 
 
+# ── ID validation ────────────────────────────────────────────────────────────
+
+class InvalidReportIdError(ValueError):
+    """Raised when a report_id is not a valid UUID (path traversal protection)."""
+
+
+def _validate_report_id(report_id: str) -> None:
+    """
+    Reject any report_id that is not a valid UUID.
+
+    Report IDs are always server-generated UUIDs. A client-supplied
+    report_id containing path separators (e.g. '../../') could traverse
+    outside the user's directory. This function blocks that attack at
+    the service layer — the point where filesystem paths are constructed.
+    """
+    try:
+        uuid.UUID(report_id)
+    except (ValueError, AttributeError, TypeError) as exc:
+        raise InvalidReportIdError(
+            f"Invalid report ID format. Expected a UUID."
+        ) from exc
+
+
 # ── Path helpers (no side-effects on read paths) ────────────────────────────
 
 def _user_report_dir(user_id: str) -> Path:
@@ -119,6 +142,7 @@ def mark_report_indexed(user_id: str, report_id: str) -> bool:
     Update the _indexed flag in the stored JSON. Returns True on success.
     Called by ingestion_service after a successful vector upsert.
     """
+    _validate_report_id(report_id)
     report_path = _user_report_dir(user_id) / f"{report_id}.json"
     if not report_path.exists():
         return False
@@ -139,6 +163,27 @@ def mark_report_indexed(user_id: str, report_id: str) -> bool:
         if temp_path.exists():
             temp_path.unlink()
         return False
+
+
+def delete_report(user_id: str, report_id: str) -> bool:
+    """
+    Delete a report JSON file for the given user and report_id.
+
+    Returns True if the file was deleted, False if it did not exist.
+    Raises OSError on filesystem errors.
+
+    Ownership is enforced by path construction:
+        REPORTS_BASE_DIR / <user_id> / <report_id>.json
+    A report in another user's directory cannot be reached.
+    """
+    _validate_report_id(report_id)
+    report_path = _user_report_dir(user_id) / f"{report_id}.json"
+    if not report_path.exists():
+        return False
+
+    report_path.unlink()
+    logger.info("Deleted report %s for user %s", report_id, user_id)
+    return True
 
 
 # ── Read operations ──────────────────────────────────────────────────────────
@@ -195,6 +240,7 @@ def get_report(user_id: str, report_id: str) -> ReportDetail | None:
     belongs to another user or genuinely does not exist, preventing
     enumeration of other users' IDs.
     """
+    _validate_report_id(report_id)
     report_path = _user_report_dir(user_id) / f"{report_id}.json"
     if not report_path.exists():
         return None

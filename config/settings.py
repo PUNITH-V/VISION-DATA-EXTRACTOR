@@ -16,7 +16,13 @@ if not API_KEY:
     )
 
 # ── FastAPI / server ────────────────────────────────────────────────────────
-_raw_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:5500,http://127.0.0.1:5500")
+# Comma-separated list of allowed CORS origins.
+# Default covers VS Code Live Server (5500) and python -m http.server 5500.
+# Add http://localhost:8080 or similar if you use a different port.
+_raw_origins = os.getenv(
+    "ALLOWED_ORIGINS",
+    "http://localhost:5500,http://127.0.0.1:5500,http://localhost:5501,http://127.0.0.1:5501"
+)
 ALLOWED_ORIGINS: list[str] = [o.strip() for o in _raw_origins.split(",") if o.strip()]
 
 UPLOAD_MAX_BYTES: int = int(os.getenv("UPLOAD_MAX_BYTES", str(10 * 1024 * 1024)))

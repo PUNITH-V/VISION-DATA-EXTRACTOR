@@ -117,42 +117,51 @@ class TestListReports:
 
 class TestGetReport:
     def test_own_report_returns_200(self, tmp_path):
+        # Use a proper UUID-format report_id (the fix now requires this)
+        report_id = "77777777-0000-4000-8000-777777777777"
         _write_report(
             tmp_path / "user-b",
-            "rep-77",
-            _make_report_payload("rep-77"),
+            report_id,
+            _make_report_payload(report_id),
         )
 
         client = _make_client("user-b")
         with patch("api.services.report_service.REPORTS_BASE_DIR", tmp_path):
-            response = client.get("/api/reports/rep-77")
+            response = client.get(f"/api/reports/{report_id}")
 
         assert response.status_code == 200
-        assert response.json()["report_id"] == "rep-77"
+        assert response.json()["report_id"] == report_id
 
     def test_missing_report_returns_404(self, tmp_path):
+        import uuid as _uuid
         client = _make_client("user-c")
+        valid_missing_uuid = str(_uuid.uuid4())
         with patch("api.services.report_service.REPORTS_BASE_DIR", tmp_path):
-            response = client.get("/api/reports/does-not-exist")
+            response = client.get(f"/api/reports/{valid_missing_uuid}")
         assert response.status_code == 404
 
     def test_other_users_report_returns_404(self, tmp_path):
         """
-        User A requests User B's report_id.
-        Because User A's directory does not contain it, the result is 404.
-        This avoids confirming the existence of records belonging to others.
+        User A requests User B's report_id using a syntactically valid UUID.
+        The request passes UUID validation and reaches the ownership check,
+        where it must return 404 because the report lives in User B's directory.
+        This confirms that isolation is enforced at the ownership layer,
+        not merely at format validation.
         """
-        # Write report only in User B's directory.
+        # Use a stable UUID that is syntactically valid so UUID validation passes.
+        user_b_report_id = "bbbb0000-0000-4000-8000-bbbbbbbbbbbb"
+
+        # Write the report into User B's directory only.
         _write_report(
             tmp_path / "user-b",
-            "secret-report",
-            _make_report_payload("secret-report"),
+            user_b_report_id,
+            _make_report_payload(user_b_report_id),
         )
 
-        # User A tries to access User B's report ID.
+        # User A requests User B's report ID — must be 404 at the ownership check.
         client = _make_client("user-a")
         with patch("api.services.report_service.REPORTS_BASE_DIR", tmp_path):
-            response = client.get("/api/reports/secret-report")
+            response = client.get(f"/api/reports/{user_b_report_id}")
 
         assert response.status_code == 404, (
             "User A should NOT be able to access User B's report. "

@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 
 <html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Vision Extractor</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-tertiary":"#ffffff","primary-container":"#4f46e5","on-primary":"#ffffff","surface-container-lowest":"#ffffff","surface-container-highest":"#d3e4fe","surface-variant":"#d3e4fe","secondary-container":"#dae2fd","on-secondary-fixed-variant":"#3f465c","on-secondary-container":"#5c647a","secondary-fixed":"#dae2fd","on-error-container":"#93000a","on-secondary":"#ffffff","on-surface":"#0b1c30","outline-variant":"#c7c4d8","on-background":"#0b1c30","error-container":"#ffdad6","primary-fixed":"#e2dfff","outline":"#777587","inverse-on-surface":"#eaf1ff","on-tertiary-fixed-variant":"#005236","surface-container-low":"#eff4ff","tertiary-fixed":"#6ffbbe","tertiary":"#005338","primary-fixed-dim":"#c3c0ff","inverse-primary":"#c3c0ff","surface-tint":"#4d44e3","on-primary-fixed-variant":"#3323cc","on-secondary-fixed":"#131b2e","surface-container-high":"#dce9ff","secondary-fixed-dim":"#bec6e0","secondary":"#565e74","surface":"#f8f9ff","tertiary-container":"#006e4b","on-surface-variant":"#464555","background":"#f8f9ff","on-error":"#ffffff","on-primary-fixed":"#0f0069","surface-container":"#e5eeff","tertiary-fixed-dim":"#4edea3","on-tertiary-fixed":"#002113","on-tertiary-container":"#67f4b7","primary":"#3525cd","surface-dim":"#cbdbf5","inverse-surface":"#213145","surface-bright":"#f8f9ff","on-primary-container":"#dad7ff","error":"#ba1a1a"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"gutter-mobile":"0.75rem","space-sm":"0.5rem","margin-mobile":"1rem","space-md":"1rem","gutter":"1.5rem","space-xl":"2.5rem","space-lg":"1.5rem","margin":"2rem","space-xs":"0.25rem"},"fontFamily":{"label-md":["Inter"],"body-sm":["Inter"],"headline-lg":["Geist"],"code-sm":["JetBrains Mono"],"body-lg":["Inter"],"headline-sm":["Geist"],"headline-lg-mobile":["Geist"],"display":["Geist"],"code-md":["JetBrains Mono"],"headline-md":["Geist"],"body-md":["Inter"]},"fontSize":{"label-md":["0.75rem",{"lineHeight":"1","letterSpacing":"0.02em","fontWeight":"600"}],"body-sm":["0.75rem",{"lineHeight":"1.5","letterSpacing":"0.01em","fontWeight":"400"}],"headline-lg":["2rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"600"}],"code-sm":["0.6875rem",{"lineHeight":"1.4","letterSpacing":"0em","fontWeight":"500"}],"body-lg":["1rem",{"lineHeight":"1.6","letterSpacing":"0em","fontWeight":"400"}],"headline-sm":["1rem",{"lineHeight":"1.4","letterSpacing":"-0.005em","fontWeight":"500"}],"headline-lg-mobile":["1.5rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"600"}],"display":["3rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"600"}],"code-md":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-md":["1.25rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"500"}],"body-md":["0.875rem",{"lineHeight":"1.5","letterSpacing":"0em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[18px]">document_scanner</span></div><span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Vision Extractor</span></div><div class="hidden sm:inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-secondary-container/60"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span><span class="font-code-sm text-code-sm text-on-secondary-container font-medium">Mock Dev Mode</span></div></div><nav class="hidden xl:flex items-center gap-space-xs px-1 py-1 rounded-lg bg-surface-container-low" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg shadow-sm"><a aria-current="page" class="px-space-md py-1.5 transition-all bg-primary-container text-on-primary font-medium rounded-lg shadow-sm" data-path="overview" href="#">Overview</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="extract-images" href="#">Extract Images</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="search-reports" href="#">Search Reports</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="ask-your-images" href="#">Ask Your Images</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="reports" href="#">Reports</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="settings" href="#">Settings</a></nav><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-low"><span class="h-2 w-2 rounded-full bg-error"></span><span class="font-code-sm text-code-sm text-on-surface-variant">FastAPI: Disconnected (Mock)</span></div><button aria-label="Toggle theme" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" id="theme-toggle-btn" onclick="document.documentElement.classList.toggle('dark');" type="button"><span class="material-symbols-outlined text-[20px] dark:hidden">light_mode</span><span class="material-symbols-outlined text-[20px] hidden dark:inline">dark_mode</span></button><div class="relative flex items-center gap-space-sm pl-space-xs"><div class="hidden md:flex flex-col text-right"><span class="font-body-sm text-body-sm text-on-surface font-medium leading-none">Alex Chen</span><span class="font-code-sm text-code-sm text-on-surface-variant leading-none mt-1">alex.chen@example.com</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/30" src="https://lh3.googleusercontent.com/aida/AEtjO1WrygqNG8DoBkyZmVOAzPcSdGRHbjzFnHSJSvadj8SyfRiZY1mIbMpA1LMAO0odOXCSvWPwGe1djU4lfeAfm0tkdFtMy831tM7p4HJhI63iXkp6CRVSWEw_9g1zmVx0_2lq3dBwlj8cfJdPaq4a-17MGZWXmrxtx8CHcBWV4HSvWR3hRE0nhQ1DzvE35INVWoY23Q8mwRUL283aTvbXGriEN2QZIh6zXjiMT7sfaOEgsCREtGrBWbonrJ4"/><span class="material-symbols-outlined text-[16px] text-on-surface-variant hidden md:inline">expand_more</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="../shared/theme.js"></script><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-tertiary":"#ffffff","primary-container":"#4f46e5","on-primary":"#ffffff","surface-container-lowest":"#ffffff","surface-container-highest":"#d3e4fe","surface-variant":"#d3e4fe","secondary-container":"#dae2fd","on-secondary-fixed-variant":"#3f465c","on-secondary-container":"#5c647a","secondary-fixed":"#dae2fd","on-error-container":"#93000a","on-secondary":"#ffffff","on-surface":"#0b1c30","outline-variant":"#c7c4d8","on-background":"#0b1c30","error-container":"#ffdad6","primary-fixed":"#e2dfff","outline":"#777587","inverse-on-surface":"#eaf1ff","on-tertiary-fixed-variant":"#005236","surface-container-low":"#eff4ff","tertiary-fixed":"#6ffbbe","tertiary":"#005338","primary-fixed-dim":"#c3c0ff","inverse-primary":"#c3c0ff","surface-tint":"#4d44e3","on-primary-fixed-variant":"#3323cc","on-secondary-fixed":"#131b2e","surface-container-high":"#dce9ff","secondary-fixed-dim":"#bec6e0","secondary":"#565e74","surface":"#f8f9ff","tertiary-container":"#006e4b","on-surface-variant":"#464555","background":"#f8f9ff","on-error":"#ffffff","on-primary-fixed":"#0f0069","surface-container":"#e5eeff","tertiary-fixed-dim":"#4edea3","on-tertiary-fixed":"#002113","on-tertiary-container":"#67f4b7","primary":"#3525cd","surface-dim":"#cbdbf5","inverse-surface":"#213145","surface-bright":"#f8f9ff","on-primary-container":"#dad7ff","error":"#ba1a1a"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"gutter-mobile":"0.75rem","space-sm":"0.5rem","margin-mobile":"1rem","space-md":"1rem","gutter":"1.5rem","space-xl":"2.5rem","space-lg":"1.5rem","margin":"2rem","space-xs":"0.25rem"},"fontFamily":{"label-md":["Inter"],"body-sm":["Inter"],"headline-lg":["Geist"],"code-sm":["JetBrains Mono"],"body-lg":["Inter"],"headline-sm":["Geist"],"headline-lg-mobile":["Geist"],"display":["Geist"],"code-md":["JetBrains Mono"],"headline-md":["Geist"],"body-md":["Inter"]},"fontSize":{"label-md":["0.75rem",{"lineHeight":"1","letterSpacing":"0.02em","fontWeight":"600"}],"body-sm":["0.75rem",{"lineHeight":"1.5","letterSpacing":"0.01em","fontWeight":"400"}],"headline-lg":["2rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"600"}],"code-sm":["0.6875rem",{"lineHeight":"1.4","letterSpacing":"0em","fontWeight":"500"}],"body-lg":["1rem",{"lineHeight":"1.6","letterSpacing":"0em","fontWeight":"400"}],"headline-sm":["1rem",{"lineHeight":"1.4","letterSpacing":"-0.005em","fontWeight":"500"}],"headline-lg-mobile":["1.5rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"600"}],"display":["3rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"600"}],"code-md":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-md":["1.25rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"500"}],"body-md":["0.875rem",{"lineHeight":"1.5","letterSpacing":"0em","fontWeight":"400"}]}}}};</script>
+<!-- Supabase JS CDN — pinned 2.49.4 -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.min.js"></script>
+<script src="../shared/config.js"></script>
+<script src="../shared/supabase-client.js"></script>
+<script src="../shared/auth.js"></script>
+<script src="../shared/api-client.js"></script>
+</head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[18px]">document_scanner</span></div><span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Vision Extractor</span></div><div class="hidden sm:inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-secondary-container/60"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span><span class="font-code-sm text-code-sm text-on-secondary-container font-medium" id="ve-mode-badge">Live</span></div></div><nav class="hidden xl:flex items-center gap-space-xs px-1 py-1 rounded-lg bg-surface-container-low" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg shadow-sm"><a aria-current="page" class="px-space-md py-1.5 transition-all bg-primary-container text-on-primary font-medium rounded-lg shadow-sm" data-path="overview" href="#">Overview</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="extract-images" href="#">Extract Images</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="search-reports" href="#">Search Reports</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="ask-your-images" href="#">Ask Your Images</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="reports" href="#">Reports</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="settings" href="#">Settings</a></nav><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-low"><span class="h-2 w-2 rounded-full bg-error" id="ve-api-dot"></span><span class="font-code-sm text-code-sm text-on-surface-variant" id="ve-api-status">FastAPI: Checking…</span></div><button aria-label="Toggle theme" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" id="theme-toggle-btn" onclick="document.documentElement.classList.toggle('dark');" type="button"><span class="material-symbols-outlined text-[20px] dark:hidden">light_mode</span><span class="material-symbols-outlined text-[20px] hidden dark:inline">dark_mode</span></button><div class="relative flex items-center gap-space-sm pl-space-xs"><div class="hidden md:flex flex-col text-right"><span class="font-body-sm text-body-sm text-on-surface font-medium leading-none" id="ve-user-name">—</span><span class="font-code-sm text-code-sm text-on-surface-variant leading-none mt-1" id="ve-user-email">—</span></div><div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary font-label-md text-label-md" id="ve-user-avatar">?</div><span class="material-symbols-outlined text-[16px] text-on-surface-variant hidden md:inline">expand_more</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
 <!-- Subtle Ambient Glow Canvas Backdrop (Contained) -->
 <div class="relative w-full overflow-hidden px-gutter-mobile md:px-margin py-space-lg flex flex-col gap-space-xl">
 <!-- Top Hero Section with Asymmetric Layout & Quick Badges -->
@@ -10,12 +17,12 @@
 <div class="flex items-center gap-space-sm mb-space-xs">
 <span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-code-sm text-code-sm uppercase tracking-wider">
 <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
-            Workspace / Alex Chen
+            <span id="ve-workspace-label">Workspace</span>
           </span>
 <span class="font-code-sm text-code-sm text-on-surface-variant font-medium">Session: #VE-8831</span>
 </div>
-<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-semibold">
-          Welcome back, Alex
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-semibold" id="ve-welcome-heading">
+          Welcome back
         </h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant mt-1.5">
           Extract structured schema, search image embeddings, and query visual datasets with AI.
@@ -48,7 +55,7 @@
 <span class="font-headline-sm text-headline-sm text-on-surface font-medium">Pipeline Status</span>
 <span class="hidden sm:inline text-outline-variant font-code-sm text-code-sm">•</span>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
-<strong class="font-medium text-on-surface">Development Mode:</strong> Mock pipeline active. Real Supabase auth connected. FastAPI backend ready to bridge.
+<strong class="font-medium text-on-surface">Status:</strong> Real Supabase auth connected. FastAPI backend status shown above.
             </p>
 </div>
 </div>
@@ -76,8 +83,8 @@
 </div>
 <div class="mt-space-md">
 <div class="flex items-baseline gap-space-xs">
-<span class="font-display text-display text-on-surface font-semibold tracking-tight">14</span>
-<span class="font-code-sm text-code-sm text-tertiary font-medium">+3 today</span>
+<span class="font-display text-display text-on-surface font-semibold tracking-tight" id="ov-total-extractions">—</span>
+<span class="font-code-sm text-code-sm text-tertiary font-medium" id="ov-extractions-suffix">loading</span>
 </div>
 <div class="w-full bg-surface-container rounded-full h-1 mt-space-sm overflow-hidden">
 <div class="bg-primary-container h-full rounded-full" style="width: 70%"></div>
@@ -95,8 +102,8 @@
 </div>
 <div class="mt-space-md">
 <div class="flex items-baseline gap-space-xs">
-<span class="font-display text-display text-on-surface font-semibold tracking-tight">12</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant">PNG / JPEG / WebP</span>
+<span class="font-display text-display text-on-surface font-semibold tracking-tight" id="ov-indexed-images">—</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant" id="ov-indexed-suffix">loading</span>
 </div>
 <div class="w-full bg-surface-container rounded-full h-1 mt-space-sm overflow-hidden">
 <div class="bg-secondary h-full rounded-full" style="width: 85%"></div>
@@ -114,10 +121,8 @@
 </div>
 <div class="mt-space-md">
 <div class="flex items-baseline gap-space-xs">
-<span class="font-display text-display text-tertiary font-semibold tracking-tight">98.2%</span>
-<span class="inline-flex items-center text-tertiary font-code-sm text-code-sm">
-<span class="material-symbols-outlined text-[14px]">arrow_upward</span> 0.4%
-            </span>
+<span class="font-display text-display text-tertiary font-semibold tracking-tight" id="ov-avg-confidence">—</span>
+<span class="inline-flex items-center text-tertiary font-code-sm text-code-sm" id="ov-confidence-suffix">loading</span>
 </div>
 <div class="w-full bg-surface-container rounded-full h-1 mt-space-sm overflow-hidden">
 <div class="bg-tertiary h-full rounded-full" style="width: 98.2%"></div>
@@ -182,13 +187,13 @@
 <div class="flex items-center gap-space-sm">
 <span class="font-code-sm text-code-sm text-on-surface-variant">Sort: Most Recent</span>
 <a class="inline-flex items-center gap-1 font-body-sm text-body-sm text-primary hover:text-primary-container font-medium" data-path="reports" href="#">
-<span>View all 14 reports</span>
+<span id="ov-view-all-reports">View all reports</span>
 <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
 </a>
 </div>
 </div>
 <!-- Structured Cards Mosaic List -->
-<div class="flex flex-col gap-space-sm">
+<div class="flex flex-col gap-space-sm" id="ov-recent-reports">
 <!-- Report Item 1: Invoice Scan -->
 <article class="group rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all p-space-md shadow-sm">
 <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
@@ -379,7 +384,7 @@
 <span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Embeddings Explorer</span>
 </div>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
-            Explore 12 indexed items in ChromaDB using natural language queries like "Find all water utility bills above $120".
+            Explore <span id="ov-indexed-count">0</span> indexed items in ChromaDB using natural language queries.
           </p>
 </div>
 <div class="mt-space-md flex items-center justify-between">
@@ -416,4 +421,110 @@
       }
     });
   })();
-</script></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)]"><div class="w-full px-margin py-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm"><div class="flex items-center gap-space-md"><span class="font-body-sm text-body-sm text-on-surface-variant">Vision Extractor Workstation</span><span class="h-3 w-px bg-outline-variant"></span><span class="font-code-sm text-code-sm text-on-surface-variant">v2.4.0-preview</span><span class="h-3 w-px bg-outline-variant"></span><span class="font-code-sm text-code-sm text-tertiary font-medium">Engine: OCR-Core 4.2</span></div><div class="flex items-center gap-space-lg"><span class="font-body-sm text-body-sm text-on-surface-variant">Environment: Isolated Sandbox</span><span class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Vision Extractor Labs</span></div></div></footer></body></html>
+</script><!-- Toast notification -->
+<div class="fixed bottom-6 right-6 z-[100] transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 ease-out flex items-center gap-space-sm bg-inverse-surface text-inverse-on-surface px-space-md py-space-sm rounded-xl shadow-xl" id="toast">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed-dim">check_circle</span>
+<span class="font-body-sm text-body-sm font-medium" id="toast-message">Done</span>
+</div>
+</main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)]"><div class="w-full px-margin py-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm"><div class="flex items-center gap-space-md"><span class="font-body-sm text-body-sm text-on-surface-variant">Vision Extractor Workstation</span><span class="h-3 w-px bg-outline-variant"></span><span class="font-code-sm text-code-sm text-on-surface-variant">v2.4.0-preview</span><span class="h-3 w-px bg-outline-variant"></span><span class="font-code-sm text-code-sm text-tertiary font-medium">Engine: OCR-Core 4.2</span></div><div class="flex items-center gap-space-lg"><span class="font-body-sm text-body-sm text-on-surface-variant">Environment: Isolated Sandbox</span><span class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Vision Extractor Labs</span></div></div></footer>
+
+<script>
+"use strict";
+
+(async function initOverview() {
+  // Wire nav links and guard session simultaneously.
+  var session = await initPage();
+  if (!session) return;
+
+  // Populate user display fields from real session.
+  var user = session.user;
+  var displayName =
+    (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name)) ||
+    user.email.split("@")[0];
+
+  var nameEls  = document.querySelectorAll("#ve-user-name");
+  var emailEls = document.querySelectorAll("#ve-user-email");
+  var labelEls = document.querySelectorAll("#ve-workspace-label");
+  var heading  = document.getElementById("ve-welcome-heading");
+
+  nameEls.forEach(function(el)  { el.textContent = displayName; });
+  emailEls.forEach(function(el) { el.textContent = user.email; });
+  labelEls.forEach(function(el) { el.textContent = "Workspace / " + displayName; });
+  if (heading) heading.textContent = "Welcome back, " + displayName;
+
+// Health check � update FastAPI status indicator.
+  var apiDot    = document.getElementById("ve-api-dot");
+  var apiStatus = document.getElementById("ve-api-status");
+  if (!apiStatus) apiStatus = document.getElementById("ve-api-status-text");
+
+  try {
+    var healthRes = await veAPI.get("/api/health");
+    if (healthRes.ok && healthRes.data && healthRes.data.status === "ok") {
+      if (apiDot)    { apiDot.className = "h-2 w-2 rounded-full bg-tertiary"; }
+      if (apiStatus) { apiStatus.textContent = "FastAPI: Connected"; }
+    } else {
+      if (apiDot)    { apiDot.className = "h-2 w-2 rounded-full bg-error"; }
+      if (apiStatus) { apiStatus.textContent = "FastAPI: Degraded"; }
+    }
+  } catch (_) {
+    if (apiDot)    { apiDot.className = "h-2 w-2 rounded-full bg-error"; }
+    if (apiStatus) { apiStatus.textContent = "FastAPI: Unreachable"; }
+  }
+
+  // -- Fetch real reports and populate metrics ----------------------------
+  var reportsRes = await veAPI.get("/api/reports");
+  var reports = (reportsRes.ok && reportsRes.data) ? reportsRes.data : [];
+
+  var total     = reports.length;
+  var indexed   = reports.filter(function(r) { return r.indexed; }).length;
+  var totalFields = reports.reduce(function(s, r) { return s + (r.field_count || 0); }, 0);
+  var confMap  = { High: 3, Medium: 2, Low: 1 };
+  var avgConf  = total > 0 ? reports.reduce(function(s, r) { return s + (confMap[r.confidence] || 0); }, 0) / total : 0;
+  var confPct  = avgConf === 3 ? "High" : avgConf >= 2 ? "Medium" : avgConf >= 1 ? "Low" : "�";
+
+  // Update metric tiles
+  var el;
+  if (el = document.getElementById("ov-total-extractions")) el.textContent = total;
+  if (el = document.getElementById("ov-extractions-suffix")) el.textContent = total === 0 ? "no data" : (total === 1 ? "1 report" : total + " reports");
+  if (el = document.getElementById("ov-indexed-images")) el.textContent = indexed;
+  if (el = document.getElementById("ov-indexed-suffix")) el.textContent = total > 0 ? indexed + " of " + total + " indexed" : "no data";
+  if (el = document.getElementById("ov-avg-confidence")) el.textContent = confPct;
+  if (el = document.getElementById("ov-confidence-suffix")) el.textContent = total > 0 ? confPct + " confidence" : "no data";
+  if (el = document.getElementById("ov-view-all-reports")) el.textContent = total > 0 ? "View all " + total + " reports" : "No reports yet";
+  if (el = document.getElementById("ov-indexed-count")) el.textContent = indexed;
+
+  // Render recent reports (max 5)
+  var recentContainer = document.getElementById("ov-recent-reports");
+  if (recentContainer) {
+    recentContainer.innerHTML = "";
+    if (reports.length === 0) {
+      recentContainer.innerHTML = '<div class="py-8 text-center text-on-surface-variant font-body-sm">No reports yet. Upload an image on the Extract Images page to get started.</div>';
+    } else {
+      reports.slice(0, 5).forEach(function(r) {
+        var article = document.createElement("article");
+        article.className = "group rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all p-space-md shadow-sm";
+        article.innerHTML =
+          '<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">' +
+          '<div class="flex items-start sm:items-center gap-space-md min-w-0">' +
+          '<div class="relative w-14 h-14 rounded-lg bg-surface-container flex items-center justify-center shrink-0 shadow-sm"><span class="material-symbols-outlined text-[24px] text-on-surface-variant">image</span></div>' +
+          '<div class="flex flex-col min-w-0">' +
+          '<div class="flex flex-wrap items-center gap-space-sm">' +
+          '<span class="font-code-md text-code-md text-on-surface font-semibold truncate">' + r.image_filename + '</span>' +
+          '<span class="inline-flex items-center px-2 py-0.5 rounded text-label-md font-label-md bg-secondary-container text-on-secondary-container">' + r.confidence + '</span>' +
+          '</div>' +
+          '<div class="flex flex-wrap items-center gap-y-1 gap-x-space-md mt-1 text-on-surface-variant font-body-sm text-body-sm">' +
+          '<span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-tertiary">data_object</span><span>Extracted <strong>' + r.field_count + ' fields</strong></span></span>' +
+          '<span class="text-outline-variant">�</span>' +
+          '<span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-on-surface-variant">schedule</span><span>' + new Date(r.created_at).toLocaleDateString() + '</span></span>' +
+          (r.indexed ? '<span class="text-outline-variant">�</span><span class="inline-flex items-center gap-1 text-tertiary font-code-sm text-code-sm"><span class="material-symbols-outlined text-[16px]">hub</span>Indexed</span>' : "") +
+          '</div></div></div>' +
+          '<div class="flex items-center gap-space-xs">' +
+          '<button class="px-space-md py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm font-medium transition-colors shadow-sm" onclick="window.location.href=\'' + VE_PAGES["reports"] + '\'" type="button">View Report</button>' +
+          '</div></div>';
+        recentContainer.appendChild(article);
+      });
+    }
+  }
+})();
+</script>
+</body></html>

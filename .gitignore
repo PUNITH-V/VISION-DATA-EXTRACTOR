@@ -90,6 +90,10 @@ node_modules/
 .next/
 out/
 
+# Frontend public config containing real Supabase URL/anon key.
+# Commit config.js.example (with placeholders) but not the real values.
+vision_extractor_UI/shared/config.js
+
 # Environment files used by frontend tooling
 .env.local
 .env.development.local

@@ -1,0 +1,14 @@
+/**
+ * Copy this file to config.js and fill in your real values.
+ * config.js is gitignored. This example file is safe to commit.
+ *
+ * Find these values at:
+ *   Supabase Dashboard → your project → Settings → API
+ *     SUPABASE_URL      = "Project URL"
+ *     SUPABASE_ANON_KEY = "anon / public" key
+ */
+window.VE_CONFIG = {
+  SUPABASE_URL:      "REPLACE_WITH_YOUR_SUPABASE_URL",
+  SUPABASE_ANON_KEY: "REPLACE_WITH_YOUR_SUPABASE_ANON_KEY",
+  API_BASE_URL:      "http://127.0.0.1:8000",
+};

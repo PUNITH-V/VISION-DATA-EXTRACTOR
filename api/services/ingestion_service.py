@@ -26,6 +26,7 @@ from api.services.report_service import (
     _CREATED_AT_KEY,
     _user_report_dir,
     _chroma_dir_for_user,
+    _validate_report_id,
     mark_report_indexed,
 )
 # Note: the _-prefixed imports are intentional shared constants between
@@ -72,7 +73,18 @@ def ingest_user_reports(
 
     # Collect the report files to process.
     if report_ids is not None:
-        candidates = [report_dir / f"{rid}.json" for rid in report_ids]
+        # Validate each report_id as a UUID before constructing a filesystem path.
+        # Invalid IDs are skipped (counted in summary.skipped) rather than
+        # crashing the entire request.
+        candidates = []
+        for rid in report_ids:
+            try:
+                _validate_report_id(rid)
+            except ValueError:
+                logger.warning("Skipping invalid report_id in ingestion request: %r", rid)
+                summary.skipped += 1
+                continue
+            candidates.append(report_dir / f"{rid}.json")
     else:
         candidates = sorted(report_dir.glob("*.json"), key=lambda p: p.name)
 
