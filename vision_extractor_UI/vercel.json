@@ -1,0 +1,10 @@
+﻿{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/sign_in_vision_extractor/code.html",
+      "permanent": false
+    }
+  ]
+}
