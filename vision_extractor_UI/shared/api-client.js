@@ -17,8 +17,9 @@ const veAPI = (function () {
   "use strict";
 
   function baseURL() {
-    return (window.VE_CONFIG && window.VE_CONFIG.API_BASE_URL) ||
-      "http://127.0.0.1:8000";
+    return (window.VE_RUNTIME_CONFIG && window.VE_RUNTIME_CONFIG.API_BASE_URL) ||
+    (window.VE_CONFIG && window.VE_CONFIG.API_BASE_URL) ||
+    "http://127.0.0.1:8000";
   }
 
   /** Obtain the current access token from the live Supabase session. */
